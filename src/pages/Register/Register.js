@@ -1,7 +1,20 @@
 import styled from "styled-components";
 import {useFormik} from "formik";
 import {navigate} from "use-history";
+import img from "../../img/huge-stack-books_118813-4896.avif"
 
+
+const RegisterPage = styled.div`
+background-image: url(${img});
+  //background-color: red;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
 
 const Container = styled.div`
 
@@ -79,6 +92,7 @@ const Register = (props) =>{
     const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
 
     return (
+        <RegisterPage>
         <Container>
            <CreateAccount>
                     <CreateAccTitle>Регистрация</CreateAccTitle>
@@ -95,6 +109,7 @@ const Register = (props) =>{
                     </Form>
                </CreateAccount>
         </Container>
+            </RegisterPage>
     )
 }
 export default Register
