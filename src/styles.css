@@ -1,3 +1,6 @@
-.body{
-     background-image:url("/src/img/background photo (1).png");
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Manrope:wght@600;800&family=Poppins:wght@200;400;500;600&display=swap');
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
 }
