@@ -3,19 +3,27 @@ import Register from "../Register";
 import {useFormik} from "formik";
 import styled from "styled-components";
 
+
+
 const Container = styled.div`
-  background-color: rgba(245, 245, 245, 0.94);
+    background-image:url("../../img/background photo (1).png");
+  background-size: cover;
+  background-position: center;
+  
+  //background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 `;
 
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
 
+  
 
 `;
 
@@ -23,6 +31,7 @@ const CreateAccTitle = styled.div`
      font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+ 
 
 `;
 
@@ -36,7 +45,7 @@ const Input = styled.input`
   padding: 15px 25px;
   flex: 5;
   border-radius: 4px;
-  border: 1px solid darkcyan;
+  border: 1px solid black;
 `;
 
 const Errors = styled.div`
@@ -45,23 +54,46 @@ const Errors = styled.div`
 `;
 
 const Button = styled.button`
-
+  background-color: #2d59a9;
+  color: white;
   width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #2d59a9;
+  font-size: 18px;
+  cursor: pointer;
 `;
+ const Desc = styled.p`
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   font-size: 16px;
+   color: #595858;
 
+   span {
+     cursor: pointer;
+     margin-left: 2px;
+   }
+
+   span:hover {
+     color: #0a539b;
+
+
+   }
+ `;
 const Login = (props) => {
     const {setPassword, setEmail} = props
     return (
         <Container>
             <CreateAccount>
                 <CreateAccTitle>Авторизация</CreateAccTitle>
-                <p>Введите ваш логин и пароль</p>
+                <Desc>Введите ваш логин и пароль</Desc>
                 <Form>
                     <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
                     <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
                     <Button type="submit">Войти</Button>
-                    <p>Не помню пароль</p>
-                    <p>У вас нет аккаунта? <span>Регистрация</span></p>
+                    <Desc><span>Не помню пароль</span></Desc>
+                    <Desc>У вас нет аккаунта? <span>Регистрация</span></Desc>
                 </Form>
             </CreateAccount>
         </Container>

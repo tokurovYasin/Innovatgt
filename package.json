@@ -17,6 +17,7 @@
     "redux": "^4.2.1",
     "styled-components": "^6.0.7",
     "toaster": "^0.1.2",
+    "use-history": "^1.4.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"
   },

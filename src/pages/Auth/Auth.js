@@ -6,15 +6,20 @@ import styled from "styled-components";
 import axios from "axios";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+// import {useHistory} from "use-history";
+
 
 
 const Box = styled.div`
-  background-color: rgba(245, 245, 245, 0.94);
+  background-image: url("../../img/background photo (1).png");
+  //background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  //height: 1000px;
+
 `;
 
 
@@ -27,6 +32,7 @@ const AuthRootComponent = () => {
     const [ city,setCity ] = useState("")
 
     const location = useLocation()
+    // const history = useHistory()
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(location.pathname === "/login") {
@@ -34,7 +40,7 @@ const AuthRootComponent = () => {
            email,
            password
        }
-       const user = await axios.post("http://localhost:3000/auth/login", userData )
+       const user = await axios.post("https://64d4d327b592423e4694be3a.mockapi.io/login", userData )
         console.log(user.data)
         } else {
             if (password === repeatPassword) {
@@ -45,8 +51,11 @@ const AuthRootComponent = () => {
                 number,
                 city
             }
-            // const newUser = await instance.post("auth/register", userData)
-            // console.log(newUser)
+            const newUser = await axios.post("https://64d4d327b592423e4694be3a.mockapi.io/register", userData)
+           alert("Вы успешно зарегестрировались!")
+
+
+
             } else {
                 throw new Error("У вас не совпадают пароли")
             }
@@ -81,7 +90,7 @@ const AuthRootComponent = () => {
                 location.pathname === "/login"
                     ? <Login setEmail = {setEmail} setPassword = {setPassword}/> : location.pathname === "/register"
                         ? <Register setEmail = {setEmail} setPassword = {setPassword} setName = {setName} setNumber = {setNumber}
-                                    setRepeatPassword = {setRepeatPassword} setCity = {setCity} /> : null}
+                                    setRepeatPassword = {setRepeatPassword} setCity = {setCity}  />  : null}
         </Box>
 
     )
