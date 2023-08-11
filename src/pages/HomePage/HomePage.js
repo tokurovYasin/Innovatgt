@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
-import img from "../../img/huge-stack-books_118813-4896.avif"
+import img from "../../img/photo_2023-08-11_13-47-21.jpg"
 
 const MainPage = styled.div`
   background-image: url(${img});
   background-size: cover;
-  background-position: center;
-  width: 80%;
+  width: 100%;
   height: 100vh;
   position: relative;
 `;

@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
+
 
 const Container = styled.div`
- max-width: 1220px;
+
   margin: 0 auto;
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f6f6f6;
+  
+
 `;
 const Left = styled.div`
   display: flex;
@@ -25,7 +30,8 @@ const Logo = styled.h1`
 
 const SearchContainer = styled.div`
   font-family: 'Jura', sans-serif;
-  margin-left: 20px;
+
+  
 `;
 
 const Input = styled.input`
@@ -33,9 +39,12 @@ const Input = styled.input`
   padding: 10px;
   box-shadow: 2px 1px 4px 0 #c9c3c3;
   border-radius: 4px;
+   width: 500px;
 `;
 
 const Menu = styled.div`
+display: flex;
+  align-items: center;
 
 `;
 const Status = styled.div`
@@ -45,11 +54,19 @@ const UserPage = styled.div`
 display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 20px;
 `;
 const Registr = styled.div`
-margin-right: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  
 `;
+
+
 const Logn = styled.div`
+  cursor: pointer;
+  font-size: 18px;
 `;
 
 
@@ -59,19 +76,19 @@ const Logn = styled.div`
 
 
 const Header = () => {
+        const navigate = useNavigate();
     return (
         <Container>
             <Left>
                 <Logo>KITEPTER</Logo>
             </Left>
-            <SearchContainer>
-                <Input></Input>
-            </SearchContainer>
-            <Menu>
-                <Status></Status>
+             <Menu>
+                <Input>
+                </Input>
+                 <Status></Status>
                 <UserPage>
-                    <Registr>Register</Registr>
-                    <Logn>Login</Logn>
+                       <Logn  onClick={() => navigate("/login")}>Login</Logn>
+                    <Registr  onClick={() => navigate("/register")}>Register</Registr>
                 </UserPage>
             </Menu>
 

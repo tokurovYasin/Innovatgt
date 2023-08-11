@@ -5,10 +5,8 @@ import img from "../../img/huge-stack-books_118813-4896.avif"
 
 
 const RegisterPage = styled.div`
-background-image: url(${img});
-  //background-color: red;
-  background-size: cover;
-  background-position: center;
+  
+  background-color:  #f6f6f6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +15,7 @@ background-image: url(${img});
 `;
 
 const Container = styled.div`
-
+   margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,12 +56,13 @@ const Errors = styled.div`
 `;
 
 const Button = styled.button`
-  width: 100%;  background-color: #3e5f80;
+  width: 100%; 
+  background-color: #2d59a9;
   color: white;
 
   height: 40px;
   border-radius: 4px;
-  border: 1px solid #3e5f80;
+  border: 1px solid #2d59a9;
   font-size: 18px;
   cursor: pointer;
 `;
