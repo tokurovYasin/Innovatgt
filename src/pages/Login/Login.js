@@ -6,11 +6,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-    background-image:url("../../img/background photo (1).png");
-  background-size: cover;
-  background-position: center;
-  
-  //background-color: red;
+background-color: #f6f6f6;
   display: flex;
   justify-content: center;
   align-items: center;

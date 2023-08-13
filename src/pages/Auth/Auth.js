@@ -11,7 +11,7 @@ import * as Yup from "yup";
 
 
 const Box = styled.div`
-  background-image: url("../../img/background photo (1).png");
+  background-image: url("../../assets/img/background photo (1).png");
   //background-color: red;
   display: flex;
   justify-content: center;

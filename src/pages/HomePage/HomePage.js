@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import img from "../../img/what-reading-header.jpeg"
-import ImgWork from "../../img/istockphoto-1153885263-612x612.jpeg"
+import imgMain from "../../assets/img/photo_2023-08-11_13-47-21.jpg"
+import ImgWork from "../../assets/img/istockphoto-1153885263-612x612.jpeg"
 
 const HomePageBlock =  styled.div`
   font-family: 'Borel', cursive;
@@ -9,12 +9,12 @@ const HomePageBlock =  styled.div`
 `;
 
 const MainPage = styled.div`
-  background-image: url(${img});
+  background-image: url(${imgMain});
   background-size:cover;
   width: 100%;
   height: 100vh;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 `;
 
 const Container = styled.div`
@@ -39,14 +39,13 @@ const MainTitle = styled.h1`
 const MainDescription = styled.h1`
   font-size: 32px;
   position: absolute;
-  top: 22%;
+  top: 20%;
   right: 22%;
   font-family: 'Borel', cursive;
 `;
 
 const HowDoesWorkBlock = styled.div`
     display: flex;
-  
 `;
 
 const HowDoesWorkBlockInfo = styled.div`
