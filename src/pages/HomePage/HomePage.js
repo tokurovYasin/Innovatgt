@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import img from "../../img/photo_2023-08-11_13-47-21.jpg"
+import img from "../../img/Penguin-Reading20Challenge-main-image-1800x1200-1.webp"
 
 const MainPage = styled.div`
   background-image: url(${img});
