@@ -23,15 +23,12 @@ const Container = styled.div`
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
-
-
 `;
 
 const CreateAccTitle = styled.div`
      font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
-
 `;
 
 const Form = styled.form`
@@ -91,7 +88,7 @@ const Register = (props) =>{
                     <CreateAccTitle>Регистрация</CreateAccTitle>
                <Desc>Введите данные для регистрации</Desc>
                       <Form >
-                        <Input placeholder="ФИО" onChange={(e) => setName(e.target.value)} />
+                        <Input placeholder="ФИО" onChange={(e) => setName(e.target.value)}/>
                         <Input placeholder="E-mail" id="e-mail" type="e-mail" onChange={(e) => setEmail(e.target.value)}/>
                         <Input placeholder="Пароль" id="password" type="password" onChange={(e) => setPassword(e.target.value)}/>
                         <Input placeholder="Подтвердите пароль" id="password" type="password" onChange={(e) => setRepeatPassword(e.target.value)}/>

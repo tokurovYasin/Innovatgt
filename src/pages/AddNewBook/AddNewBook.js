@@ -28,7 +28,7 @@ const AddNewBookImgBox = styled.div`
   cursor: pointer;
 `;
 
-const AddNewBookImg = styled.img`
+const AddNewBookImgInput = styled.input`
     
 `;
 
@@ -89,6 +89,7 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
+    const [image, setImage] = useState('')
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState('')
@@ -96,7 +97,7 @@ const AddNewBook = () => {
     const [description, setDescription] = useState('')
     const [like, setLike] = useState('')
 
-    const formData = { title, author, genre, language, description, like }
+    const formData = { image, title, author, genre, language, description, like }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -131,7 +132,8 @@ const AddNewBook = () => {
             <h3>Изображение книги</h3>
             <AddNewBookBlock>
                 <AddNewBookImgBox>
-                    <AddNewBookImg/>
+                    <StyledLabel>Изображение книги</StyledLabel>
+                    <AddNewBookImgInput type="file"/>
                 </AddNewBookImgBox>
                 <AddNewBookInfo>
                     <AddNewBookInfoForm1>

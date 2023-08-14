@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import img from "../../assets/img/png-clipart-book-tree-book-text-reading.png"
-
 
 const FooterBlock = styled.div`
   background-color: #e0dfdf;
@@ -53,7 +51,6 @@ const Footer = () => {
             <Container>
                 <Left>
                     <Pic>
-                        <img src={img}/>
                     </Pic>
                 </Left>
                 <Right>

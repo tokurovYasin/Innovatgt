@@ -6,8 +6,6 @@ import styled from "styled-components";
 import axios from "axios";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-// import {useHistory} from "use-history";
-
 
 
 const Box = styled.div`
