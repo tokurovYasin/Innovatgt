@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const AddNewBookPage = styled.div`
+  background-image: url("../../assets/img/image 15.png");
+  background-size: cover;
   padding: 30px 10%;
   text-align: left;
 `;
@@ -26,10 +28,46 @@ const AddNewBookImgBox = styled.div`
   margin-bottom: 50px;
   background-color: #f2f2f2;
   cursor: pointer;
+  vertical-align: top;
+  display: inline-block;
+  background-color: hsla(0,1%,81%,.15);
+  text-align: center;
+  position: relative;
+  box-shadow: -1px 6px 10px 0 rgba(0,0,0,.07);
 `;
 
 const AddNewBookImgInput = styled.input`
-    
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+`;
+
+const AddNewBookImage = styled.div`
+  position: absolute;
+  text-align: center;
+  color: grey;
+  font-size: 20px;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+`;
+
+const AddNewBookImageText = styled.div`
+  box-sizing: border-box;
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 20px 10px;
+  border: 3px solid hsla(0,0%,60.8%,.34);
+  background-color: hsla(0,1%,81%,.15);
+  text-align: center;
+  position: relative;
+  box-shadow: -1px 6px 10px 0 rgba(0,0,0,.07);
 `;
 
 const AddNewBookInfo = styled.div`
@@ -41,10 +79,6 @@ const AddNewBookInfo = styled.div`
 const AddNewBookInfoForm1 = styled.div`
   width: 45%;
   padding-right: 20px;
-`;
-
-const AddNewBookInfoForm2 = styled.div`
-  width: 50%;
 `;
 
 const StyledForm = styled.form`
@@ -97,6 +131,8 @@ const AddNewBook = () => {
     const [description, setDescription] = useState('')
     const [like, setLike] = useState('')
 
+    const fileComponent = useRef()
+
     const formData = { image, title, author, genre, language, description, like }
 
     const handleSubmit = async (e) => {
@@ -104,6 +140,11 @@ const AddNewBook = () => {
         const book = await axios.post('https://64d24e79f8d60b174361d7d9.mockapi.io/books', formData)
         console.log(book.data)
     }
+
+    // const handleOnChange = (e) => {
+    //     e.preventDefault()
+    //     console.log()
+    // }
 
     const formik = useFormik({
         initialValues: {
@@ -131,16 +172,17 @@ const AddNewBook = () => {
             <AddNewBookPageTitle>Поделиться новой книгой</AddNewBookPageTitle>
             <h3>Изображение книги</h3>
             <AddNewBookBlock>
-                <AddNewBookImgBox>
-                    <StyledLabel>Изображение книги</StyledLabel>
-                    <AddNewBookImgInput type="file"/>
-                </AddNewBookImgBox>
                 <AddNewBookInfo>
                     <AddNewBookInfoForm1>
                         <StyledForm onSubmit={handleSubmit}>
-                            {formik.touched.title && formik.errors.title ? (
-                                <span className="error">{formik.errors.title}</span>
-                            ) : null}
+                            <AddNewBookImgBox>
+                                <AddNewBookImgInput type="file" ref={fileComponent}/>
+                                <AddNewBookImage>
+                                    <AddNewBookImageText>
+                                        Нажмите, чтобы выбрать картину или <br/> перетащите картину сюда
+                                    </AddNewBookImageText>
+                                </AddNewBookImage>
+                            </AddNewBookImgBox>
                             <StyledLabel>Название</StyledLabel>
                             <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги'/>
                             <StyledLabel>Автор</StyledLabel>

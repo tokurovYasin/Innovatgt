@@ -6,7 +6,7 @@ import Phone from "../../assets/img/phone.png"
 import Time from "../../assets/img/time.png"
 
 const HomePageBlock =  styled.div`
-  font-family: 'Borel', cursive;
+  font-family: 'Philosopher', sans-serif;
   color: #182A38;
 `;
 
@@ -27,17 +27,20 @@ const MainTitleBox = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  font-size: 38px;
-  font-family: 'Borel', cursive;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 51px;
+  font-family: 'Philosopher', sans-serif;
   margin-bottom: 40px;
 `;
 
 const MainDescription = styled.h1`
-  font-size: 36px;
-  font-family: 'Borel', cursive;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 51px;
+  font-family: 'Philosopher', sans-serif;
   margin-bottom: 50px;
 `;
-
 
 const MainImageBox = styled.div`
   width: 45%;
@@ -68,7 +71,10 @@ const MainBtnBooks = styled.button`
 `;
 
 const HowDoesWorkTitle = styled.h2`
-  font-size: 36px;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 51px;
+  font-family: 'Philosopher', sans-serif;
   margin-bottom: 50px;
 `;
 
@@ -85,12 +91,17 @@ const HowDoesWorkInfoTitleBox = styled.div `
 `;
 
 const HowDoesWorkDescriptionTitle = styled.h3`
-  font-size: 28px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 37px;
+  font-family: 'Philosopher', sans-serif;
   margin: 0 0 0 14px;
 `;
 
 const HowDoesWorkBlockInfoSearch = styled.div`
-  font-size: 26px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   width: 30%;
   background-color: #037281;
   border-radius: 40px;
@@ -99,16 +110,20 @@ const HowDoesWorkBlockInfoSearch = styled.div`
 `;
 
 const HowDoesWorkBlockInfoPhone = styled.div`
-  font-size: 26px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   width: 30%;
   background-color: #DD5C72;
   border-radius: 40px;
-  padding: 10px 30px;
+  padding: 10px 30px 40px;
   margin: 0 40px;
 `;
 
 const HowDoesWorkBlockInfoTime = styled.div`
-  font-size: 26px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   width: 30%;
   background-color: #F3B469;
   border-radius: 40px;
@@ -122,11 +137,11 @@ const HomePage = () => {
             <Container>
                 <MainPage>
                     <MainTitleBox>
-                        <MainTitle>Китептер - это платформа для обмена книгами. <br/>Мы объединяем людей, которые хотят читать книгу,
+                        <MainTitle><strong>Китептер</strong> - это платформа для обмена книгами. <br/>Мы объединяем людей, которые хотят читать книгу,
                             не покупая ее !</MainTitle>
                         <MainDescription>
                             Если вы хотите внести свой вклад<br/> в устойчивую окружающую среду и повысить уровень
-                            грамотности в мире, то Китептер для вас.
+                            грамотности в мире, то <strong>Китептер</strong> для вас.
                         </MainDescription>
                         <MainBtnRegister>Присоединиться сейчас</MainBtnRegister>
                         <MainBtnBooks>Найти книгу</MainBtnBooks>
@@ -137,7 +152,7 @@ const HomePage = () => {
                 </MainPage>
             </Container>
             <Container>
-                <HowDoesWorkTitle>Как пользоваться Китептер ?</HowDoesWorkTitle>
+                <HowDoesWorkTitle>Как пользоваться <strong>Китептер</strong>?</HowDoesWorkTitle>
                 <HowDoesWorkBlock>
                     <HowDoesWorkBlockInfoSearch>
                         <HowDoesWorkInfoTitleBox>
@@ -145,7 +160,7 @@ const HomePage = () => {
                             <HowDoesWorkDescriptionTitle>Найдите книгу и запросите</HowDoesWorkDescriptionTitle>
                         </HowDoesWorkInfoTitleBox>
                          Найдите книгу,
-                        которую хотите прочитать. КИТЕПТЕР предлагает полный набор книг разных авторов на разных
+                        которую хотите прочитать. <strong>Китептер</strong> предлагает полный набор книг разных авторов на разных
                         языках.Попросите одолжить книгу у владельца книги.
                     </HowDoesWorkBlockInfoSearch>
                     <HowDoesWorkBlockInfoPhone>
@@ -153,7 +168,6 @@ const HomePage = () => {
                             <img src={Phone} width="70" height="70"/>
                             <HowDoesWorkDescriptionTitle>Познакомьтесь с владельцем</HowDoesWorkDescriptionTitle>
                         </HowDoesWorkInfoTitleBox>
-
                         Назначьте встречу с владельцем, чтобы забрать книгу.
                         Наша платформа предоставит информацию о местонахождении владельца только после того, как запрос будет одобрен.
                     </HowDoesWorkBlockInfoPhone>
