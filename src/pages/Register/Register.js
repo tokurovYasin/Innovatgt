@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import {useFormik} from "formik";
 import {navigate} from "use-history";
-import img from "../../img/huge-stack-books_118813-4896.avif"
-
+import bgImg from "../../assets/img/image 15.png"
 
 const RegisterPage = styled.div`
-  
-  background-color:  #f6f6f6;
+  background-image: url("${bgImg}");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,11 +78,8 @@ const Button = styled.button`
 
    span:hover {
      color: #0a539b;
-
-
    }
  `;
-
 
 const Register = (props) =>{
     const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
