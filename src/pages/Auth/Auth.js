@@ -40,7 +40,7 @@ const AuthRootComponent = () => {
            email,
            password
        }
-       const user = await axios.post("https://64d4d327b592423e4694be3a.mockapi.io/login", userData )
+       const user = await axios.post("http://34.173.33.226/api/v1/login/", userData )
         console.log(user.data)
         } else {
             if (password === repeatPassword) {
@@ -51,7 +51,7 @@ const AuthRootComponent = () => {
                 number,
                 city
             }
-            const newUser = await axios.post("https://64d4d327b592423e4694be3a.mockapi.io/register", userData)
+            const newUser = await axios.post("http://34.173.33.226/api/v1/register/", userData)
            alert("Вы успешно зарегестрировались!")
 
 

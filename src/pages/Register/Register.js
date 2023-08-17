@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import {useFormik} from "formik";
 import {navigate} from "use-history";
+import img from "../../img/huge-stack-books_118813-4896.avif"
 
+
+const RegisterPage = styled.div`
+  
+  background-color:  #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
 
 const Container = styled.div`
-
+   margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,12 +56,13 @@ const Errors = styled.div`
 `;
 
 const Button = styled.button`
-  width: 100%;  background-color: #3e5f80;
+  width: 100%; 
+  background-color: #2d59a9;
   color: white;
 
   height: 40px;
   border-radius: 4px;
-  border: 1px solid #3e5f80;
+  border: 1px solid #2d59a9;
   font-size: 18px;
   cursor: pointer;
 `;
@@ -79,6 +91,7 @@ const Register = (props) =>{
     const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
 
     return (
+        <RegisterPage>
         <Container>
            <CreateAccount>
                     <CreateAccTitle>Регистрация</CreateAccTitle>
@@ -95,6 +108,7 @@ const Register = (props) =>{
                     </Form>
                </CreateAccount>
         </Container>
+            </RegisterPage>
     )
 }
 export default Register
