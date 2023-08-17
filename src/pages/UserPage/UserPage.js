@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
 
-import bgImg from"../../assets/img/image 15.png"
+
+
+
+// import Avatar from"../../assets/img/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+import bgImg from "../../assets/img/bg-image.png"
+
 
 
 const AccountPage = styled.div`
@@ -18,9 +23,6 @@ const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 0 15px;
-
-
-
 
 `;
 const User = styled.div`
@@ -67,9 +69,6 @@ const UserLocation = styled.div`
 const UserBook = styled.div`
   margin-bottom: 10px;
   font-size: 18px;
-
-  
-
   
 `;
 const UserChange = styled.div`

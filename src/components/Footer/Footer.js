@@ -17,22 +17,14 @@ const Container = styled.div`
 
 `;
 const Left = styled.div`
-    color: white;
+  color: white;
   font-size: 20px;
-  
-
-
-
-`;
-const Center = styled.div`
-
 `;
 
 
 const BoxCallBack = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
-
   font-size: 20px;
 
 `;
@@ -45,33 +37,75 @@ const Input = styled.input`
   background-color: white;
   color: black;
   margin-top: 20px;
-
 `;
 
-
+const AboutUsTitle = styled.div`
+`;
+const AboutUsDesc = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+`;
+const FAQ = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+`;
 
 const Right = styled.div`
 
 `;
 
+const Center = styled.div`
+
+`;
+const SocMedia = styled.div`
+
+`;
+const SocMediaTitle = styled.div`
+   font-size: 18px;
+ `;
+const Inst = styled.div`
+
+`;
+const Twitter = styled.div`
+  margin-left: 5px`;
+const Fb = styled.div`
+  margin-left: 5px`;
 
 
+const SocMediaIcons = styled.div`
 
-
+`;
 
 const Footer = () => {
     return (
         <FooterBlock>
             <Container>
-
                 <Left>
-                   О нас
+                    <AboutUsTitle> О нас</AboutUsTitle>
+                    <AboutUsDesc>
+                        О нас
+                    </AboutUsDesc>
+                    <FAQ>FAQ</FAQ>
                 </Left>
+                <Center>
+                    <SocMedia>
+                        <SocMediaTitle>
+                            Мы в социальных сетях
+                        </SocMediaTitle>
+                        <SocMediaIcons>
+                            <Inst>inst</Inst>
+                            <Twitter>twit</Twitter>
+                            <Fb>fb</Fb>
+                        </SocMediaIcons>
+                    </SocMedia>
+                </Center>
                 <Right>
-                  <BoxCallBack>
-                      Свяжитесь с нами
-                      <Input type="text" size="30" color="white" placeholder="Отправить сообщение"/>
-                  </BoxCallBack>
+                    <BoxCallBack>
+                        Свяжитесь с нами
+                        <Input type="text" size="30" color="white" placeholder="Отправить сообщение"/>
+                    </BoxCallBack>
                 </Right>
             </Container>
         </FooterBlock>
