@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import Avatar from"../../assets/img/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+
 import bgImg from"../../assets/img/image 15.png"
 
 
@@ -118,7 +118,7 @@ const UserPage = (props) => {
             <Container>
                 <User>
                     <UserImg>
-                      <img src={Avatar} />
+                      {/*<img src={Avatar} />*/}
                     </UserImg>
                     <UserName>Айганыш</UserName>
                 </User>
