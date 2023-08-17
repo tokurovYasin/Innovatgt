@@ -102,13 +102,13 @@ const AddNewBookImageText = styled.div`
 `;
 
 const AddNewBookInfo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const AddNewBookInfoForm1 = styled.div`
     width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const StyledLabelLocation = styled.label`
@@ -162,6 +162,11 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
+    const [map, setMap] = useState({
+        name: '',
+        location: '',
+    });
+
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
@@ -169,10 +174,9 @@ const AddNewBook = () => {
     const [genre, setGenre] = useState('')
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
-    const [like, setLike] = useState('')
 
     const fileComponent = useRef()
-    const formData = { image, imgUrl, title, author, genre, language, description, like }
+    const formData = { image, imgUrl, title, author, genre, language, description}
 
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
@@ -189,6 +193,15 @@ const AddNewBook = () => {
                 console.error('Error:', error);
             });
         console.log(book.data)
+        axios.post('http://34.173.33.226/api/v1/add-book/', map)
+            .then(response => {
+                console.log('Response:', response.data);
+                // Handle success
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error
+            });
     }
 
     const handleChange = (e) => {
@@ -198,6 +211,11 @@ const AddNewBook = () => {
             setImage(file)
             fileReader.readAsDataURL(file)
         }
+        const { name, value } = e.target;
+        setMap((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     }
 
     const handleDrop = (e) => {
@@ -214,28 +232,26 @@ const AddNewBook = () => {
         e.stopPropagation()
     }
 
-    const formik = useFormik({
-        initialValues: {
-            title: '',
-            author: '',
-            genre: '',
-            language: '',
-            description: '',
-            like: ''
-        },
-        validationSchema: Yup.object({
-            title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
-            author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
-            genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
-            language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
-            description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
-        }),
-        onSubmit: values => {
-
-        },
-    });
-
-
+    // const formik = useFormik({
+    //     initialValues: {
+    //         title: '',
+    //         author: '',
+    //         genre: '',
+    //         language: '',
+    //         description: '',
+    //         like: ''
+    //     },
+    //     validationSchema: Yup.object({
+    //         title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
+    //         author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
+    //         genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
+    //         language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
+    //         description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
+    //     }),
+    //     // onSubmit: values => {
+    //     //
+    //     // },
+    // });
 
     return (
         <AddNewBookPage>
@@ -262,7 +278,29 @@ const AddNewBook = () => {
                                     </AddNewBookImage>
                                 </AddNewBookImgBox>
                                 <StyledLabelLocation>Локация</StyledLabelLocation>
-                                {/*<StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите локацию книги'/>*/}
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187125.06005001668!2d74.28003711789455!3d42.87645194892584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dc91b3c881%3A0x492ebaf57cdee27d!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sid!4v1692287003758!5m2!1sen!2sid"
+                                    width="260" height="450" style={{ border: 0, borderRadius: 25}} allowFullScreen="" loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"></iframe>
+
+                                <h3>Опубликовать местоположение и встроить в карту</h3>
+                                <form onSubmit={handleSubmit}>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Location Name"
+                                        value={map.name}
+                                        onChange={handleChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        placeholder="Latitude, Longitude"
+                                        value={map.location}
+                                        onChange={handleChange}
+                                    />
+                                    <button type="submit">Submit</button>
+                                </form>
                             </AddNewBookBlockLeft>
                             <AddNewBookBlockRight>
                                 <StyledLabel>Название</StyledLabel>
@@ -280,21 +318,6 @@ const AddNewBook = () => {
                         </StyledForm>
                     </AddNewBookInfoForm1>
                 </AddNewBookInfo>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282225.79979123!2d73.7250245393691!3d20.750301298393563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1587818542745!5m2!1sen!2sin"
-                width="600" height="450" frameBorder="0" style={{border: 0}} allowFullScreen="" aria-hidden="false"
-                tabIndex="0"></iframe>
-            {/*<iframe*/}
-            {/*    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.*/}
-            {/*    194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e673560804*/}
-            {/*    77!2sPT%20Kulkul%20Teknologi%20Internasional!5e0!3m2!1sen!2sid!4v1601138221085!5m2!1sen!2sid"*/}
-            {/*    width="300"*/}
-            {/*    height="450"*/}
-            {/*    style={{ border: 0 }}*/}
-            {/*    allowFullScreen=""*/}
-            {/*    aria-hidden="false"*/}
-            {/*    tabIndex="0"*/}
-            {/*/>*/}
         </AddNewBookPage>
     );
 };
