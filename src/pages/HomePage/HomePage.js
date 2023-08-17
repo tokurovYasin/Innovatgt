@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
+
 import ImgMain from "../../assets/img/main-image.png"
 import Search from "../../assets/img/search.png"
 import Phone from "../../assets/img/phone.png"
@@ -29,7 +30,7 @@ const MainTitleBox = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
   line-height: 51px;
   font-family: 'Philosopher', sans-serif;
@@ -37,7 +38,7 @@ const MainTitle = styled.h1`
 `;
 
 const MainDescription = styled.h1`
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 500;
   line-height: 51px;
   font-family: 'Philosopher', sans-serif;
@@ -93,7 +94,7 @@ const HowDoesWorkInfoTitleBox = styled.div `
 `;
 
 const HowDoesWorkDescriptionTitle = styled.h3`
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 37px;
   font-family: 'Philosopher', sans-serif;
@@ -101,7 +102,7 @@ const HowDoesWorkDescriptionTitle = styled.h3`
 `;
 
 const HowDoesWorkBlockInfoSearch = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 34px;
   width: 30%;
@@ -112,7 +113,7 @@ const HowDoesWorkBlockInfoSearch = styled.div`
 `;
 
 const HowDoesWorkBlockInfoPhone = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 34px;
   width: 30%;
@@ -123,7 +124,7 @@ const HowDoesWorkBlockInfoPhone = styled.div`
 `;
 
 const HowDoesWorkBlockInfoTime = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 34px;
   width: 30%;

@@ -10,12 +10,10 @@ import * as Yup from "yup";
 
 
 
+
+
 import UserPage from "../UserPage";
 import {useHistory} from "use-history";
-
-
-
-
 
 const Box = styled.div`
   display: flex;
@@ -38,14 +36,26 @@ const AuthRootComponent = () => {
     const location = useLocation()
     // const history = useHistory()
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if(location.pathname === "/login") {
                 const userData = {
            email,
            password
        }
-       const user = await axios.post("http://34.173.33.226/api/v1/login/", userData )
-        console.log(user.data)
+       const user = await axios.post("https://64d24e79f8d60b174361d7d9.mockapi.io/login", userData )
+        //    .then(response =>{
+        //        console.log("response:",response.data)
+        //
+        //    }).catch(
+        //        error =>{ console.error(error) }
+        //    )
+        // console.log(user.data)
+
+        //         .then(({ data }) => console.log("successfully", data))
+        //         .catch(e => console.log("failed" , e))
+            console.log(userData)
+
+
         } else {
             if (password === password_confirm) {
                 const userData = {

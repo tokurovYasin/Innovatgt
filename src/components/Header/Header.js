@@ -13,8 +13,9 @@ const HeaderPage = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1220px;
+  width: 1220px;
   color: white;
+  margin: 0 auto;
   padding: 0 15px;
   margin: 0 auto;
   display: flex;

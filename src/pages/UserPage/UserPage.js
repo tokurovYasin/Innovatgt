@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 
 
-// import Avatar from"../../assets/img/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
 import bgImg from "../../assets/img/bg-image.png"
-
 
 
 const AccountPage = styled.div`
@@ -50,9 +48,7 @@ const BoxInfo = styled.div`
   
 `;
 const UserDesc = styled.div`
-
-
-
+  
 `;
 const UserEmail = styled.div`
   margin-bottom: 10px;

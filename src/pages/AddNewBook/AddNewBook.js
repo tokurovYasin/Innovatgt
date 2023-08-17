@@ -102,13 +102,13 @@ const AddNewBookImageText = styled.div`
 `;
 
 const AddNewBookInfo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const AddNewBookInfoForm1 = styled.div`
     width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const StyledLabelLocation = styled.label`
@@ -162,6 +162,11 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
+    const [map, setMap] = useState({
+        name: '',
+        location: '',
+    });
+
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
@@ -169,10 +174,9 @@ const AddNewBook = () => {
     const [genre, setGenre] = useState('')
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
-    const [like, setLike] = useState('')
 
     const fileComponent = useRef()
-    const formData = { image, imgUrl, title, author, genre, language, description, like }
+    const formData = { image, imgUrl, title, author, genre, language, description}
 
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
@@ -189,6 +193,15 @@ const AddNewBook = () => {
                 console.error('Error:', error);
             });
         console.log(book.data)
+        axios.post('http://34.173.33.226/api/v1/add-book/', map)
+            .then(response => {
+                console.log('Response:', response.data);
+                // Handle success
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error
+            });
     }
 
     const handleChange = (e) => {
@@ -198,6 +211,11 @@ const AddNewBook = () => {
             setImage(file)
             fileReader.readAsDataURL(file)
         }
+        const { name, value } = e.target;
+        setMap((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     }
 
     const handleDrop = (e) => {
@@ -220,8 +238,13 @@ const AddNewBook = () => {
     //         author: '',
     //         genre: '',
     //         language: '',
+
     //         // description: '',
     //         // like: ''
+
+    //         description: '',
+    //         like: ''
+
     //     },
     //     validationSchema: Yup.object({
     //         title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
@@ -230,11 +253,6 @@ const AddNewBook = () => {
     //         language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
     //         description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
     //     }),
-    //     onSubmit: values => {
-    //
-    //     },
-    // });
-
 
 
     return (
@@ -262,7 +280,33 @@ const AddNewBook = () => {
                                     </AddNewBookImage>
                                 </AddNewBookImgBox>
                                 <StyledLabelLocation>Локация</StyledLabelLocation>
+
                                 <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите локацию книги'/>
+
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187125.06005001668!2d74.28003711789455!3d42.87645194892584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dc91b3c881%3A0x492ebaf57cdee27d!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sid!4v1692287003758!5m2!1sen!2sid"
+                                    width="260" height="450" style={{ border: 0, borderRadius: 25}} allowFullScreen="" loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"></iframe>
+
+                                <h3>Опубликовать местоположение и встроить в карту</h3>
+                                <form onSubmit={handleSubmit}>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Location Name"
+                                        value={map.name}
+                                        onChange={handleChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        placeholder="Latitude, Longitude"
+                                        value={map.location}
+                                        onChange={handleChange}
+                                    />
+                                    <button type="submit">Submit</button>
+                                </form>
+
                             </AddNewBookBlockLeft>
                             <AddNewBookBlockRight>
                                 <StyledLabel>Название</StyledLabel>
@@ -280,6 +324,7 @@ const AddNewBook = () => {
                         </StyledForm>
                     </AddNewBookInfoForm1>
                 </AddNewBookInfo>
+
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.2758859262003!2d74.56806517472857!3d42.88812567114868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec80cbe1495bb%3A0xa5ba93982013d43b!2zMTkg0JDRgNCw0LLQsNC90YHQutCw0Y8g0YPQu9C40YbQsCwgQmlzaGtlaywgS3lyZ3l6c3Rhbg!5e0!3m2!1sen!2sin!4v1692285503778!5m2!1sen!2sin"
                 width="600" height="450" allowFullScreen="" loading="lazy"
@@ -295,6 +340,7 @@ const AddNewBook = () => {
             {/*    aria-hidden="false"*/}
             {/*    tabIndex="0"*/}
             {/*/>*/}
+
         </AddNewBookPage>
     );
 };

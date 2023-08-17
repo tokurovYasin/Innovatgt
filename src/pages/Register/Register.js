@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import {navigate} from "use-history";
 
+
 import bgImg from "../../assets/img/bg-image.png"
+import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg"
+
+
+
 
 
 const RegisterPage = styled.div`
-
+background-image: url("${bgrImg}") ;
+   background-size: 30%;
+  background-repeat: no-repeat;
+//background-image: linear-gradient(to left top, #7fb0ed, #668bc8, #4f67a3, #39457f, #24255b);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +39,7 @@ const CreateAccTitle = styled.div`
      font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  color: white;
 `;
 
 const Form = styled.form`
@@ -40,9 +49,9 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   margin-bottom: 10px;
-  padding: 15px 25px;
+   padding: 15px 10px 15px 20px;
   flex: 5;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 1px solid #3f3e3e;
 `;
 
@@ -55,9 +64,8 @@ const Button = styled.button`
   width: 100%; 
   background-color: #2d59a9;
   color: white;
-
   height: 40px;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 1px solid #2d59a9;
   font-size: 18px;
   cursor: pointer;
@@ -68,7 +76,7 @@ const Button = styled.button`
    display: flex;
    justify-content: center;
    font-size: 16px;
-   color: #595858;
+   color: white;
 
    span {
      cursor: pointer;

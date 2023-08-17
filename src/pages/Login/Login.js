@@ -2,6 +2,7 @@ import React from 'react';
 import Register from "../Register";
 import {useFormik} from "formik";
 import styled from "styled-components";
+import {navigate} from "use-history";
 
 
 
@@ -87,7 +88,7 @@ const Login = (props) => {
                 <Form>
                     <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
                     <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button type="submit">Войти</Button>
+                    <Button type="submit" onClick={() => navigate("/")}>Войти</Button>
                     <Desc><span>Не помню пароль</span></Desc>
                     <Desc>У вас нет аккаунта? <span>Регистрация</span></Desc>
                 </Form>
