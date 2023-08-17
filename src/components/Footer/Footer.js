@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
 
+import ImgInsta from "../../assets/img/inst.png"
+import ImgGoogle from "../../assets/img/google.png"
+import ImgVk from "../../assets/img/vk.png"
+import ImgGithub from "../../assets/img/github.png"
+import ImgWhats from "../../assets/img/whatsup.png"
+
 const FooterBlock = styled.div`
   background-color: #152033;
 `;
@@ -12,7 +18,7 @@ const Container = styled.div`
   padding: 0 15px;
   justify-content: space-between;
   align-items: center;
-  height: 130px;
+  height: 200px;
   color: white;
 
 `;
@@ -26,6 +32,7 @@ const BoxCallBack = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
+  margin-top: 50px;
 
 `;
 const Input = styled.input`
@@ -66,16 +73,29 @@ const SocMediaTitle = styled.div`
    font-size: 18px;
  `;
 const Inst = styled.div`
-
+cursor: pointer;
 `;
-const Twitter = styled.div`
-  margin-left: 5px`;
-const Fb = styled.div`
-  margin-left: 5px`;
+const Google = styled.div`
+  margin-left: 5px;
+cursor: pointer;`;
 
+const Gthub = styled.div`
+  margin-left: 5px;
+  cursor: pointer;
+`;
 
+const Whatsup = styled.div`
+    cursor: pointer;
+`;
+const Vk = styled.div`
+    cursor: pointer;
+`;
 const SocMediaIcons = styled.div`
-
+display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+ 
 `;
 
 const Footer = () => {
@@ -90,22 +110,34 @@ const Footer = () => {
                     <FAQ>FAQ</FAQ>
                 </Left>
                 <Center>
-                    <SocMedia>
-                        <SocMediaTitle>
-                            Мы в социальных сетях
-                        </SocMediaTitle>
-                        <SocMediaIcons>
-                            <Inst>inst</Inst>
-                            <Twitter>twit</Twitter>
-                            <Fb>fb</Fb>
-                        </SocMediaIcons>
-                    </SocMedia>
+
                 </Center>
                 <Right>
                     <BoxCallBack>
                         Свяжитесь с нами
                         <Input type="text" size="30" color="white" placeholder="Отправить сообщение"/>
                     </BoxCallBack>
+                         <SocMedia>
+                        <SocMediaTitle>
+                        </SocMediaTitle>
+                        <SocMediaIcons>
+                            <Inst>
+                                  <img src={ImgInsta} width="20" height="20"/>
+                            </Inst>
+                            <Google>
+                                  <img src={ImgGoogle} width="20" height="20"/>
+                            </Google>
+                            <Gthub>
+                                <img src={ImgGithub} width="20" height="20"/>
+                            </Gthub>
+                            <Whatsup>
+                                    <img src={ImgWhats} width="20" height="20"/>
+                            </Whatsup>
+                            <Vk>
+                                <img src={ImgVk} width="20" height="20"/>
+                            </Vk>
+                        </SocMediaIcons>
+                    </SocMedia>
                 </Right>
             </Container>
         </FooterBlock>

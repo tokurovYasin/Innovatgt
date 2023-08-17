@@ -4,16 +4,14 @@ import {navigate} from "use-history";
 
 import bgImg from "../../assets/img/bg-image.png"
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg"
+import ImgMain from "../../assets/img/main-image.png";
+import React from "react";
 
 
 
 
 
 const RegisterPage = styled.div`
-background-image: url("${bgrImg}") ;
-   background-size: 30%;
-  background-repeat: no-repeat;
-//background-image: linear-gradient(to left top, #7fb0ed, #668bc8, #4f67a3, #39457f, #24255b);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +23,6 @@ const Container = styled.div`
    margin-top: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
 `;
 
@@ -36,10 +32,11 @@ const CreateAccount = styled.div`
 `;
 
 const CreateAccTitle = styled.div`
-     font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 40px;
   text-align: center;
-  color: white;
+  color: #3a3939;
+    font-family: 'Jost', sans-serif;
 `;
 
 const Form = styled.form`
@@ -52,7 +49,7 @@ const Input = styled.input`
    padding: 15px 10px 15px 20px;
   flex: 5;
   border-radius: 25px;
-  border: 1px solid #3f3e3e;
+  border: 1px solid #24255B;
 `;
 
 const Errors = styled.div`
@@ -62,11 +59,11 @@ const Errors = styled.div`
 
 const Button = styled.button`
   width: 100%; 
-  background-color: #2d59a9;
+  background-color: #F3B469;
   color: white;
   height: 40px;
   border-radius: 25px;
-  border: 1px solid #2d59a9;
+  border: 1px solid #F3B469;
   font-size: 18px;
   cursor: pointer;
 `;
@@ -75,8 +72,9 @@ const Button = styled.button`
    align-items: center;
    display: flex;
    justify-content: center;
-   font-size: 16px;
-   color: white;
+   font-size: 15px;
+   color: #3a3939;
+     font-family: 'Jost', sans-serif;
 
    span {
      cursor: pointer;
@@ -87,6 +85,21 @@ const Button = styled.button`
      color: #0a539b;
    }
  `;
+ const ImgContainer = styled.div`
+ margin-top: 60px;
+ 
+ `;
+const InputTitle = styled.div`
+  font-size: 16px;
+  color: #4f4e4e;
+  font-family: 'Jost', sans-serif;
+  padding-left: 20px;
+  
+
+`;
+
+
+
 
 const Register = (props) =>{
     const { setEmail, setPassword, setPassword_confirm, setNumber, setUserName, setCity } = props
@@ -94,20 +107,29 @@ const Register = (props) =>{
     return (
         <RegisterPage>
         <Container>
-           <CreateAccount>
+            <CreateAccount>
                     <CreateAccTitle>Регистрация</CreateAccTitle>
-               <Desc>Введите данные для регистрации</Desc>
+               {/*<Desc>Введите данные для регистрации</Desc>*/}
                       <Form >
+                          <InputTitle>Введите ФИО</InputTitle>
                         <Input placeholder="ФИО" onChange={(e) => setUserName(e.target.value)}/>
+                              <InputTitle>Введите ваш e-mail</InputTitle>
                         <Input placeholder="E-mail" id="e-mail" type="e-mail" onChange={(e) => setEmail(e.target.value)}/>
+                              <InputTitle>Введите ваш пароль</InputTitle>
                         <Input placeholder="Пароль" id="password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+                              <InputTitle>Подтвердите ваш пароль</InputTitle>
                         <Input placeholder="Подтвердите пароль" id="password" type="password" onChange={(e) => setPassword_confirm(e.target.value)}/>
+                              <InputTitle>Введите ваш номер телефона</InputTitle>
                         <Input placeholder="Телефон" onChange={(e) => setNumber(e.target.value)} />
+                              <InputTitle>Выберите ваш город</InputTitle>
                         <Input placeholder="Город" onChange={(e) => setCity(e.target.value)} />
                           <Button type="submit" onClick={() => navigate("/")} >Зарегестрироваться</Button>
                           <Desc>У вас есть аккаунт? <span>Авторизация</span></Desc>
                     </Form>
                </CreateAccount>
+             <ImgContainer>
+                   <img src={bgrImg} width="500"/>
+            </ImgContainer>
         </Container>
             </RegisterPage>
     )
