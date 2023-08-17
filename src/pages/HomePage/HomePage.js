@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import ImgMain from "../../assets/img/image 21.png"
+import ImgMain from "../../assets/img/main-image.png"
 import Search from "../../assets/img/search.png"
 import Phone from "../../assets/img/phone.png"
 import Time from "../../assets/img/time.png"

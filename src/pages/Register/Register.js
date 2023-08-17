@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {navigate} from "use-history";
+import bgImg from "../../assets/img/bg-image.png"
 
 const RegisterPage = styled.div`
-  
-  background-color:  #f6f6f6;
+  background-image: url("${bgImg}");
   display: flex;
   justify-content: center;
   align-items: center;
