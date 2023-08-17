@@ -5,40 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d0b362f-7e8c-415a-84d6-8f6bb25431d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Bookmark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Search_light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/filtration.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/image 15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/image 21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/logo kitepter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/time.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/Penguin-Reading20Challenge-main-image-1800x1200-1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/background photo (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/bg-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/huge-stack-books_118813-4896.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/main-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/people-love-reading-books-education-concept-vector-illustration-flat-style_580420-250.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/photo_2023-08-11_13-47-21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/png-clipart-book-tree-book-text-reading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/png-clipart-book-trees-trees-book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/png-transparent-publishing-book-tree-graphy-organization-book-reading-author-grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/tree-growing-from-open-book-vector-isolated-white_1284-41909.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/Снимок экрана 2023-08-11 в 17.48.24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/AddNewBook/AddNewBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/AddNewBook/AddNewBook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/UserPage/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UserPage/UserPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/Routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/Routers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1691673338221</updated>
       <workItem from="1691673339917" duration="21000" />
-      <workItem from="1692099131816" duration="31190000" />
+      <workItem from="1692099131816" duration="33794000" />
     </task>
     <servers />
   </component>
