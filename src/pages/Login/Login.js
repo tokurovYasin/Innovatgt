@@ -2,6 +2,8 @@ import React from 'react';
 import Register from "../Register";
 import {useFormik} from "formik";
 import styled from "styled-components";
+import {navigate} from "use-history";
+import ImgLogin from "../../assets/img/logina2.jpeg"
 
 
 
@@ -18,16 +20,23 @@ background-color: #f6f6f6;
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
+  position: relative;
 
   
 
 `;
 
 const CreateAccTitle = styled.div`
+    font-family: 'Jost', sans-serif;
      font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
- 
+      position: absolute;
+    right: 150px;
+    top: 107px;
+`;
+
+const LoginImgBox = styled.div`
 
 `;
 
@@ -38,10 +47,10 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   margin-bottom: 10px;
-  padding: 15px 25px;
+  border: 1px solid #24255B;
+    padding: 15px 10px 15px 20px;
   flex: 5;
-  border-radius: 4px;
-  border: 1px solid black;
+  border-radius: 25px;
 `;
 
 const Errors = styled.div`
@@ -54,7 +63,7 @@ const Button = styled.button`
   color: white;
   width: 100%;
   height: 40px;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 1px solid #2d59a9;
   font-size: 18px;
   cursor: pointer;
@@ -82,12 +91,17 @@ const Login = (props) => {
     return (
         <Container>
             <CreateAccount>
-                <CreateAccTitle>Авторизация</CreateAccTitle>
+                <CreateAccTitle>
+                    Логин
+                </CreateAccTitle>
+                  <LoginImgBox>
+                          <img src={ImgLogin} width="500" height="250"/>
+                    </LoginImgBox>
                 <Desc>Введите ваш логин и пароль</Desc>
                 <Form>
                     <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
                     <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button type="submit">Войти</Button>
+                    <Button type="submit" onClick={() => navigate("/")}>Войти</Button>
                     <Desc><span>Не помню пароль</span></Desc>
                     <Desc>У вас нет аккаунта? <span>Регистрация</span></Desc>
                 </Form>
