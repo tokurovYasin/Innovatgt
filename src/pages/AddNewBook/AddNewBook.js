@@ -226,6 +226,27 @@ const AddNewBook = () => {
 
         },
     });
+    // const formik = useFormik({
+    //     initialValues: {
+    //         title: '',
+    //         author: '',
+    //         genre: '',
+    //         language: '',
+
+    //         // description: '',
+    //         // like: ''
+
+    //         description: '',
+    //         like: ''
+
+    //     },
+    //     validationSchema: Yup.object({
+    //         title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
+    //         author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
+    //         genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
+    //         language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
+    //         description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
+    //     }),
 
     return (
         <AddNewBookPage>
@@ -252,10 +273,12 @@ const AddNewBook = () => {
                                     </AddNewBookImage>
                                 </AddNewBookImgBox>
                                 <StyledLabelLocation>Локация</StyledLabelLocation>
+                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите локацию книги'/>
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187125.06005001668!2d74.28003711789455!3d42.87645194892584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dc91b3c881%3A0x492ebaf57cdee27d!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sid!4v1692287003758!5m2!1sen!2sid"
                                     width="260" height="450" style={{ border: 0, borderRadius: 25}} allowFullScreen="" loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"></iframe>
+                                <h3>Опубликовать местоположение и встроить в карту</h3>
                             </AddNewBookBlockLeft>
                             <AddNewBookBlockRight>
                                 <StyledLabel>Название</StyledLabel>
@@ -291,6 +314,22 @@ const AddNewBook = () => {
                         </StyledForm>
                     </AddNewBookInfoForm1>
                 </AddNewBookInfo>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.2758859262003!2d74.56806517472857!3d42.88812567114868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec80cbe1495bb%3A0xa5ba93982013d43b!2zMTkg0JDRgNCw0LLQsNC90YHQutCw0Y8g0YPQu9C40YbQsCwgQmlzaGtlaywgS3lyZ3l6c3Rhbg!5e0!3m2!1sen!2sin!4v1692285503778!5m2!1sen!2sin"
+                width="600" height="450" allowFullScreen="" loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"></iframe>
+            {/*<iframe*/}
+            {/*    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.*/}
+            {/*    194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e673560804*/}
+            {/*    77!2sPT%20Kulkul%20Teknologi%20Internasional!5e0!3m2!1sen!2sid!4v1601138221085!5m2!1sen!2sid"*/}
+            {/*    width="300"*/}
+            {/*    height="450"*/}
+            {/*    style={{ border: 0 }}*/}
+            {/*    allowFullScreen=""*/}
+            {/*    aria-hidden="false"*/}
+            {/*    tabIndex="0"*/}
+            {/*/>*/}
+
         </AddNewBookPage>
     );
 };

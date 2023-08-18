@@ -88,6 +88,7 @@ const UserPage = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 15px;
+    font-family: 'Jost', sans-serif;
 `;
 const Registr = styled.div`
     margin-left: 18px;

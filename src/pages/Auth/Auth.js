@@ -6,8 +6,8 @@ import styled from "styled-components";
 import axios from "axios";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import UserPage from "../UserPage";
 import {useHistory} from "use-history";
-import {UserPage} from "../UserPage";
 
 const Box = styled.div`
   display: flex;
@@ -30,14 +30,27 @@ const AuthRootComponent = () => {
     const location = useLocation()
     // const history = useHistory()
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if(location.pathname === "/login") {
                 const userData = {
            email,
            password
        }
        const user = await axios.post("http://34.173.33.226/api/v1/login/", userData )
-        console.log(user.data)
+        //    .then(response =>{
+        //        console.log("response:",response.data)
+        //
+        //    }).catch(
+        //        error =>{ console.error(error) }
+        //    )
+        // console.log(user.data)
+
+        //         .then(({ data }) => console.log("successfully", data))
+        //         .catch(e => console.log("failed" , e))
+            console.log(userData)
+               alert("Вы вошли в свой аккаунт!")
+
+
         } else {
             if (password === password_confirm) {
                 const userData = {
