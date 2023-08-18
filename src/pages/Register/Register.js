@@ -2,9 +2,8 @@ import styled from "styled-components";
 import {navigate} from "use-history";
 
 
-import bgImg from "../../assets/img/bg-image.png"
+
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg"
-import ImgMain from "../../assets/img/main-image.png";
 import React from "react";
 
 
@@ -127,9 +126,10 @@ const Register = (props) =>{
                           <Desc>У вас есть аккаунт? <span>Авторизация</span></Desc>
                     </Form>
                </CreateAccount>
-             <ImgContainer>
+                  <ImgContainer>
                    <img src={bgrImg} width="500"/>
             </ImgContainer>
+
         </Container>
             </RegisterPage>
     )

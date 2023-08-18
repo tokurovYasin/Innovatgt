@@ -16,7 +16,7 @@ const Container = styled.div`
   max-width: 1220px;
   margin: 0 auto;
   padding: 0 15px;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 200px;
   color: white;
@@ -109,9 +109,7 @@ const Footer = () => {
                     </AboutUsDesc>
                     <FAQ>FAQ</FAQ>
                 </Left>
-                <Center>
 
-                </Center>
                 <Right>
                     <BoxCallBack>
                         Свяжитесь с нами
