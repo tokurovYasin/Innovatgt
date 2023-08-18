@@ -3,8 +3,6 @@ import Register from "../Register";
 import {useFormik} from "formik";
 import styled from "styled-components";
 
-
-
 const Container = styled.div`
 background-color: #f6f6f6;
   display: flex;
@@ -18,8 +16,6 @@ background-color: #f6f6f6;
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
-
-  
 
 `;
 

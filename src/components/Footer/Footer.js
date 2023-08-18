@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 
 const FooterBlock = styled.div`
-  background-color: #e0dfdf;
+  background-color: #152033;
 `;
 
 const Container = styled.div`
@@ -10,51 +10,102 @@ const Container = styled.div`
   max-width: 1220px;
   margin: 0 auto;
   padding: 0 15px;
-
   justify-content: space-between;
   align-items: center;
+  height: 130px;
+  color: white;
 
 `;
 const Left = styled.div`
-  flex: 1;
-  padding: 20px;
-  margin-left: 20px;
+  color: white;
+  font-size: 20px;
+`;
 
 
+const BoxCallBack = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+
 `;
-const Center = styled.div`
-  flex: 1;
-  padding: 20px;
-  margin-left: 40px;
+const Input = styled.input`
+  border: antiquewhite;
+  padding: 10px;
+  box-shadow: 2px 1px 4px 0 #c9c3c3;
+  border-radius: 25px;
+  width: 500px;
+  background-color: white;
+  color: black;
+  margin-top: 20px;
 `;
+
+const AboutUsTitle = styled.div`
+`;
+const AboutUsDesc = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+`;
+const FAQ = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+`;
+
 const Right = styled.div`
-  flex: 1;
-  padding: 15px;
-  margin-left: 40px;
-  font-size: 22px;
-  font-family: 'Borel', cursive;
-  color: #4a4a4a;
-`;
-const Pic = styled.div`
-img{
-width: 100px;
-  height: 100px;
-}
 
 `;
 
+const Center = styled.div`
 
+`;
+const SocMedia = styled.div`
+
+`;
+const SocMediaTitle = styled.div`
+   font-size: 18px;
+ `;
+const Inst = styled.div`
+
+`;
+const Twitter = styled.div`
+  margin-left: 5px`;
+const Fb = styled.div`
+  margin-left: 5px`;
+
+
+const SocMediaIcons = styled.div`
+
+`;
 
 const Footer = () => {
     return (
         <FooterBlock>
             <Container>
                 <Left>
-                    <Pic>
-                    </Pic>
+                    <AboutUsTitle> О нас</AboutUsTitle>
+                    <AboutUsDesc>
+                        О нас
+                    </AboutUsDesc>
+                    <FAQ>FAQ</FAQ>
                 </Left>
+                <Center>
+                    <SocMedia>
+                        <SocMediaTitle>
+                            Мы в социальных сетях
+                        </SocMediaTitle>
+                        <SocMediaIcons>
+                            <Inst>inst</Inst>
+                            <Twitter>twit</Twitter>
+                            <Fb>fb</Fb>
+                        </SocMediaIcons>
+                    </SocMedia>
+                </Center>
                 <Right>
-                    Если вы хотите внести свой вклад в устойчивую окружающую среду и повысить уровень грамотности в мире, то KITEPTER для вас!
+                    <BoxCallBack>
+                        Свяжитесь с нами
+                        <Input type="text" size="30" color="white" placeholder="Отправить сообщение"/>
+                    </BoxCallBack>
                 </Right>
             </Container>
         </FooterBlock>

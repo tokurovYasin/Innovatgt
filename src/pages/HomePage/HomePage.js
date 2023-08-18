@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import ImgMain from "../../assets/img/main-image.png"
 import Search from "../../assets/img/search.png"
 import Phone from "../../assets/img/phone.png"
 import Time from "../../assets/img/time.png"
+import dataBook from "../../data.js"
+import axios from "axios";
+import ImgScroll from "../../assets/img/book scroll.png"
 
 
 const HomePageBlock =  styled.div`
@@ -132,7 +135,21 @@ const HowDoesWorkBlockInfoTime = styled.div`
   margin-left: 40px;
 `;
 
+const Scroll = styled.div`
+    margin: 100px 0;
+`;
+
 const HomePage = () => {
+
+    const [allBooks, setAllBooks] = useState([])
+
+    // useEffect(() => {
+    //     axios(dataBook)
+    //         .then((res) => setAllBooks(res.data.results))
+    //     console.log(allBooks)
+    // },[])
+
+
     return (
         <HomePageBlock>
             <Container>
@@ -181,6 +198,13 @@ const HomePage = () => {
                     </HowDoesWorkBlockInfoTime>
                 </HowDoesWorkBlock>
             </Container>
+            <div>
+                <Container>
+                    <Scroll>
+                        <img src={ImgScroll} width="100%" height="auto"/>
+                    </Scroll>
+                </Container>
+            </div>
         </HomePageBlock>
     );
 };

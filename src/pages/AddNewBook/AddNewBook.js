@@ -4,10 +4,10 @@ import axios from "axios";
 import {navigate} from "use-history";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import BgImage from "../../assets/img/bg-image.png"
+// import BgImage from "../../assets/img/bg-image.png"
 
 const AddNewBookPage = styled.div`
-  background-image: url("${BgImage}");
+  // background-image: url("");
   background-size: 30%;
   background-repeat: no-repeat;
   padding: 30px 10% 20%;
@@ -162,21 +162,17 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
-    const [map, setMap] = useState({
-        name: '',
-        location: '',
-    });
-
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
+    const [condition, setCondition] = useState()
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState('')
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
 
     const fileComponent = useRef()
-    const formData = { image, imgUrl, title, author, genre, language, description}
+    const formData = { image, imgUrl,title, condition, author, genre, language, description}
 
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
@@ -186,22 +182,7 @@ const AddNewBook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData)
-            .then(response => {
-                console.log('Response:', response.data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
         console.log(book.data)
-        axios.post('http://34.173.33.226/api/v1/add-book/', map)
-            .then(response => {
-                console.log('Response:', response.data);
-                // Handle success
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle error
-            });
     }
 
     const handleChange = (e) => {
@@ -211,16 +192,10 @@ const AddNewBook = () => {
             setImage(file)
             fileReader.readAsDataURL(file)
         }
-        const { name, value } = e.target;
-        setMap((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
     }
 
     const handleDrop = (e) => {
         e.preventDefault()
-        e.stopPropagation()
         if (e.dataTransfer.files && e.dataTransfer.files.length) {
             setImage(e.dataTransfer.files[0])
             fileReader.readAsDataURL(e.dataTransfer.files[0])
@@ -229,29 +204,28 @@ const AddNewBook = () => {
 
     const handleDragEmpty = (e) => {
         e.preventDefault()
-        e.stopPropagation()
     }
 
-    // const formik = useFormik({
-    //     initialValues: {
-    //         title: '',
-    //         author: '',
-    //         genre: '',
-    //         language: '',
-    //         description: '',
-    //         like: ''
-    //     },
-    //     validationSchema: Yup.object({
-    //         title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
-    //         author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
-    //         genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
-    //         language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
-    //         description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
-    //     }),
-    //     // onSubmit: values => {
-    //     //
-    //     // },
-    // });
+    const formik = useFormik({
+        initialValues: {
+            title: '',
+            author: '',
+            genre: '',
+            language: '',
+            description: '',
+
+        },
+        validationSchema: Yup.object({
+            title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
+            author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
+            genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
+            language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
+            description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
+        }),
+        onSubmit: values => {
+
+        },
+    });
 
     return (
         <AddNewBookPage>
@@ -262,7 +236,7 @@ const AddNewBook = () => {
                             <AddNewBookBlockLeft>
                                 <AddBookImageLabel>Изображение книги</AddBookImageLabel>
                                 <AddNewBookImgBox>
-                                    <AddNewBookImgInput type="file" ref={fileComponent} onChange={handleChange}/>
+                                    <AddNewBookImgInput type="file" ref={fileComponent} onChange={handleChange} required/>
                                     <AddNewBookImage>
                                         <AddNewBookImageText>
                                             {image ?
@@ -282,38 +256,37 @@ const AddNewBook = () => {
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187125.06005001668!2d74.28003711789455!3d42.87645194892584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dc91b3c881%3A0x492ebaf57cdee27d!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sid!4v1692287003758!5m2!1sen!2sid"
                                     width="260" height="450" style={{ border: 0, borderRadius: 25}} allowFullScreen="" loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"></iframe>
-
-                                <h3>Опубликовать местоположение и встроить в карту</h3>
-                                <form onSubmit={handleSubmit}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Location Name"
-                                        value={map.name}
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        placeholder="Latitude, Longitude"
-                                        value={map.location}
-                                        onChange={handleChange}
-                                    />
-                                    <button type="submit">Submit</button>
-                                </form>
                             </AddNewBookBlockLeft>
                             <AddNewBookBlockRight>
                                 <StyledLabel>Название</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги'/>
+                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги' required/>
                                 <StyledLabel>Автор</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setAuthor(e.target.value)} placeholder='Введите автора книги'/>
+                                <StyledInput type="text" onChange={(e) => setAuthor(e.target.value)} placeholder='Введите автора книги' required/>
                                 <StyledLabel>Жанр</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setGenre(e.target.value)} placeholder='Введите жанр книги'/>
+                                <StyledInput type="text" onChange={(e) => setGenre(e.target.value)} placeholder='Введите жанр книги' required/>
+                                <StyledLabel>Состояние книги</StyledLabel>
+                                <StyledInput
+                                             list="books"
+                                             onChange={(e) => setCondition(e.target.value)}
+                                             placeholder='Введите состояние книги' required/>
+                                <datalist id="ищщлы">
+                                    <option value="Новая книга" />
+                                    <option value="Хорошее состояние" />
+                                    <option value="Приемлемое состояник" />
+                                </datalist>
                                 <StyledLabel>На каком языке написана книга</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setLanguage(e.target.value)} placeholder='Введите категорию книги'/>
+                                <StyledInput type="text" onChange={(e) => setLanguage(e.target.value)} placeholder='Введите категорию книги' required/>
                                 <StyledLabel>Описание книги</StyledLabel>
-                                <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги'/>
+                                <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
                                 <StyledButton type="submit" onClick={() => navigate("/")}>Публиковать книгу</StyledButton>
+                                {/*<form action="">*/}
+                                {/*    <input list="ищщлы"/>*/}
+                                {/*        <datalist id="ищщлы">*/}
+                                {/*            <option value="Новая книга" />*/}
+                                {/*            <option value="Хорошее состояние" />*/}
+                                {/*            <option value="Приемлемое состояник" />*/}
+                                {/*        </datalist>*/}
+                                {/*</form>*/}
                             </AddNewBookBlockRight>
                         </StyledForm>
                     </AddNewBookInfoForm1>
