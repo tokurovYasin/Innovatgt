@@ -119,7 +119,7 @@ const Header = () => {
         <SearchContainer>
           <Input placeholder="Поиск..." type="text" size="30" color="white" />
           {/*<img src={ImgSearch} width="30" height="30"/>*/}
-          <Filtration>
+          <Filtration onClick={() => navigate("/filter")}>
             <img src={ImgFilt} width="43" height="43" />
           </Filtration>
         </SearchContainer>
