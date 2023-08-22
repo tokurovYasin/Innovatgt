@@ -85,9 +85,7 @@ const InputTitle = styled.div`
   font-size: 16px;
   color: #4f4e4e;
   font-family: 'Jost', sans-serif;
-  padding-left: 20px;
-  
-
+  padding-left:20px;
 `;
 
 

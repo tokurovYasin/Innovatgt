@@ -5,14 +5,13 @@ import {navigate} from "use-history";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import BgImage from "../../assets/img/addBookBg.jpeg"
-import {MenuItem} from "@mui/material";
 
 const AddNewBookPage = styled.div`
   background-image: url("${BgImage}");
   background-size: 32%;
   background-repeat: no-repeat;
-  padding: 30px 10% 20%;
-  background-position: 4% 56%;
+  padding: 30px 10% ;
+  background-position: 4% 77%;
 `;
 
 const AddNewBookPageTitle = styled.h1`
@@ -127,6 +126,7 @@ const StyledInput = styled.input`
   border-radius: 25px;
   margin-bottom: 20px;
   background-color: #f2f2f2;
+  cursor: pointer;
 `;
 
 const StyledInputOptions = styled.input`
@@ -137,6 +137,7 @@ const StyledInputOptions = styled.input`
   border-radius: 25px;
   margin-bottom: 20px;
   background-color: #f2f2f2;
+  cursor: pointer;
 `;
 
 const StyledDatalist = styled.datalist`
@@ -195,7 +196,7 @@ const AddNewBook = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const book = await axios.post('https://64d24e79f8d60b174361d7d9.mockapi.io/books', formData)
+        const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData)
         console.log(book.data)
     }
 
@@ -271,33 +272,9 @@ const AddNewBook = () => {
                                 <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги' required/>
                                 <StyledLabel>Автор</StyledLabel>
                                 <StyledInput type="text" onChange={(e) => setAuthor(e.target.value)} placeholder='Введите автора книги' required/>
-                                <StyledLabel>Тип книги</StyledLabel>
-                                <StyledInputOptions
-                                    type="text" list="options1" placeholder="Выберите тип книги" required/>
-                                <StyledDatalist id="options1">
-                                    <StyledOption value="Комиксы"/>
-                                    <StyledOption value="Манги"/>
-                                    <StyledOption value="Ранобэ"/>
-                                    <StyledOption value="Новеллы"/>
-                                    <StyledOption value="Самопомощи"/>
-                                    <StyledOption value="Научные"/>
-                                    <StyledOption value="Поучительные"/>
-                                    <StyledOption value="Литературные"/>
-                                    <StyledOption value="Лингвистические"/>
-                                    <StyledOption value="Технические"/>
-                                    <StyledOption value="Дидактические"/>
-                                    <StyledOption value="Информативные"/>
-                                    <StyledOption value="Религиозные"/>
-                                    <StyledOption value="Иллюстрированные"/>
-                                    <StyledOption value="Лектронные"/>
-                                    <StyledOption value="Поэтические"/>
-                                    <StyledOption value="Биографические"/>
-                                    <StyledOption value="Дидактические"/>
-                                    <StyledOption value="Художественные"/>
-                                </StyledDatalist>
                                 <StyledLabel>Жанр книги</StyledLabel>
                                 <StyledInputOptions
-                                    type="text" list="options2" placeholder="Выберите жанр книги" required/>
+                                    type="text" list="options2" onChange={(e) => setGenre(e.target.value)} placeholder="Выберите жанр книги" required/>
                                 <StyledDatalist id="options2">
                                     <StyledOption value="Фэнтези"/>
                                     <StyledOption value="Фантастика"/>
@@ -328,14 +305,37 @@ const AddNewBook = () => {
                                 </StyledDatalist>
                                 <StyledLabel>Состояние книги</StyledLabel>
                                 <StyledInputOptions
-                                    type="text" list="options3" placeholder="Выберите состояние книги" required/>
+                                    type="text" list="options3" onChange={(e) => setCondition(e.target.value)} placeholder="Выберите состояние книги" required/>
                                 <StyledDatalist id="options3">
                                     <StyledOption value="Новая книга" />
                                     <StyledOption value="Хорошее состояние" />
                                     <StyledOption value="Приемлемое состояние" />
                                 </StyledDatalist>
                                 <StyledLabel>На каком языке написана книга</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setLanguage(e.target.value)} placeholder='Введите категорию книги' required/>
+                                <StyledInputOptions
+                                    type="text" list="option4" onChange={(e) => setLanguage(e.target.value)} placeholder='Выберите язык книги' required/>
+                                <StyledDatalist id="option4">
+                                    <StyledOption value="Кыргызский"/>
+                                    <StyledOption value="Английский"/>
+                                    <StyledOption value="Кыргызский"/>
+                                    <StyledOption value="Китайский"/>
+                                    <StyledOption value="Русский"/>
+                                    <StyledOption value="Неменцкий"/>
+                                    <StyledOption value="Чешский"/>
+                                    <StyledOption value="Испанский"/>
+                                    <StyledOption value="Хинди"/>
+                                    <StyledOption value="Арабский"/>
+                                    <StyledOption value="Турецкий"/>
+                                    <StyledOption value="Корейский"/>
+                                    <StyledOption value="Французский"/>
+                                    <StyledOption value="Немецкий"/>
+                                    <StyledOption value="Вьетнамский"/>
+                                    <StyledOption value="Персидский"/>
+                                    <StyledOption value="Португальский"/>
+                                    <StyledOption value="Японский"/>
+                                    <StyledOption value="Итальянский"/>
+                                    <StyledOption value="Польский"/>
+                                </StyledDatalist>
                                 <StyledLabel>Описание книги</StyledLabel>
                                 <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
                                 <StyledButton type="submit" onClick={() => navigate("/")}>Публиковать книгу</StyledButton>

@@ -6,6 +6,7 @@ import AboutBook from "../components/AboutBook";
 import AuthRootComponent from "../pages/Auth";
 import UserPage from "../pages/UserPage";
 import Filterr from "../components/Filterr/Filterr";
+import NotFound from "../pages/NotFound";
 const Routers = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const Routers = () => {
       <Route path="/aboutBook" element={<AboutBook />} />
       <Route path="/userpage" element={<UserPage />} />
       <Route path="/filter" element={<Filterr />} />
+      <Route path="*" element={<NotFound />}/>
     </Routes>
   );
 };
