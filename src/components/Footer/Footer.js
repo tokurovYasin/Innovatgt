@@ -89,7 +89,6 @@ const SocMediaIcons = styled.div`
 `;
 
 const Footer = () => {
-
     return (
         <FooterBlock>
             <Container>
@@ -132,6 +131,9 @@ const Footer = () => {
         </FooterBlock>
 
     );
+
+
+
 
   return (
     <FooterBlock>
@@ -176,7 +178,6 @@ const Footer = () => {
       </Container>
     </FooterBlock>
   );
-
 };
 
 export default Footer;

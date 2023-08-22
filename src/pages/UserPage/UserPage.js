@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
@@ -165,7 +165,7 @@ const AllBooks = styled.div`
 
 const UserPage = (props) => {
     const navigate = useNavigate();
-       const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
+const [ user, setUser ] = useState()
     return (
         <AccountPage>
             <Container>

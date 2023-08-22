@@ -1,14 +1,7 @@
 import styled from "styled-components";
 import {navigate} from "use-history";
-
-
-
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg"
 import React from "react";
-
-
-
-
 
 const RegisterPage = styled.div`
   display: flex;

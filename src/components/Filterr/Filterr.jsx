@@ -7,9 +7,6 @@ const Container = styled.div`
   width: 1220px;
   background: url(${ImgFilter});
   background-repeat: no-repeat;
-  
-
-  
   margin: auto;
 `;
 

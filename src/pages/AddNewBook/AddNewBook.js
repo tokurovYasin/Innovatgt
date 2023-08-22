@@ -4,14 +4,15 @@ import axios from "axios";
 import {navigate} from "use-history";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import BgImage from "../../assets/img/bg-image.png"
+import BgImage from "../../assets/img/addBookBg.jpeg"
+import {MenuItem} from "@mui/material";
 
 const AddNewBookPage = styled.div`
   background-image: url("${BgImage}");
-  background-size: 30%;
+  background-size: 32%;
   background-repeat: no-repeat;
   padding: 30px 10% 20%;
-  background-position: 100% 80%;
+  background-position: 4% 56%;
 `;
 
 const AddNewBookPageTitle = styled.h1`
@@ -111,13 +112,6 @@ const AddNewBookInfoForm1 = styled.div`
   justify-content: space-between;
 `;
 
-const StyledLabelLocation = styled.label`
-  font-size: 18px;
-  display: block;
-  margin: 20px 0;
-  font-weight: bold;
-`;
-
 const StyledLabel = styled.label`
   font-size: 18px;
   display: block;
@@ -133,6 +127,26 @@ const StyledInput = styled.input`
   border-radius: 25px;
   margin-bottom: 20px;
   background-color: #f2f2f2;
+`;
+
+const StyledInputOptions = styled.input`
+  width: 100%;
+  font-size: 18px;
+  padding: 15px 10px 15px 20px;
+  border: 2px solid #adabb0;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+`;
+
+const StyledDatalist = styled.datalist`
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const StyledOption = styled.option`
+  padding: 8px;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -162,21 +176,17 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
-    const [map, setMap] = useState({
-        name: '',
-        location: '',
-    });
-
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
+    const [condition, setCondition] = useState()
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState('')
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
 
     const fileComponent = useRef()
-    const formData = { image, imgUrl, title, author, genre, language, description}
+    const formData = { image, imgUrl,title, condition, author, genre, language, description}
 
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
@@ -185,23 +195,8 @@ const AddNewBook = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData)
-            .then(response => {
-                console.log('Response:', response.data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        const book = await axios.post("http://34.173.33.226/api/v1/add-book/", formData)
         console.log(book.data)
-        axios.post('http://34.173.33.226/api/v1/add-book/', map)
-            .then(response => {
-                console.log('Response:', response.data);
-                // Handle success
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle error
-            });
     }
 
     const handleChange = (e) => {
@@ -211,16 +206,10 @@ const AddNewBook = () => {
             setImage(file)
             fileReader.readAsDataURL(file)
         }
-        const { name, value } = e.target;
-        setMap((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
     }
 
     const handleDrop = (e) => {
         e.preventDefault()
-        e.stopPropagation()
         if (e.dataTransfer.files && e.dataTransfer.files.length) {
             setImage(e.dataTransfer.files[0])
             fileReader.readAsDataURL(e.dataTransfer.files[0])
@@ -229,31 +218,28 @@ const AddNewBook = () => {
 
     const handleDragEmpty = (e) => {
         e.preventDefault()
-        e.stopPropagation()
     }
 
-    // const formik = useFormik({
-    //     initialValues: {
-    //         title: '',
-    //         author: '',
-    //         genre: '',
-    //         language: '',
+    const formik = useFormik({
+        initialValues: {
+            title: '',
+            author: '',
+            genre: '',
+            language: '',
+            description: '',
 
-    //         // description: '',
-    //         // like: ''
+        },
+        validationSchema: Yup.object({
+            title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
+            author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
+            genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
+            language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
+            description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
+        }),
+        onSubmit: values => {
 
-    //         description: '',
-    //         like: ''
-
-    //     },
-    //     validationSchema: Yup.object({
-    //         title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
-    //         author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
-    //         genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
-    //         language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
-    //         description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
-    //     }),
-
+        },
+    });
 
     return (
         <AddNewBookPage>
@@ -279,68 +265,84 @@ const AddNewBook = () => {
                                         </AddNewBookImageText>
                                     </AddNewBookImage>
                                 </AddNewBookImgBox>
-                                <StyledLabelLocation>Локация</StyledLabelLocation>
-
-                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите локацию книги'/>
-
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187125.06005001668!2d74.28003711789455!3d42.87645194892584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dc91b3c881%3A0x492ebaf57cdee27d!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sid!4v1692287003758!5m2!1sen!2sid"
-                                    width="260" height="450" style={{ border: 0, borderRadius: 25}} allowFullScreen="" loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"></iframe>
-
-                                <h3>Опубликовать местоположение и встроить в карту</h3>
-                                <form onSubmit={handleSubmit}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Location Name"
-                                        value={map.name}
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        placeholder="Latitude, Longitude"
-                                        value={map.location}
-                                        onChange={handleChange}
-                                    />
-                                    <button type="submit">Submit</button>
-                                </form>
-
                             </AddNewBookBlockLeft>
                             <AddNewBookBlockRight>
                                 <StyledLabel>Название</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги'/>
+                                <StyledInput type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Введите название книги' required/>
                                 <StyledLabel>Автор</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setAuthor(e.target.value)} placeholder='Введите автора книги'/>
-                                <StyledLabel>Жанр</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setGenre(e.target.value)} placeholder='Введите жанр книги'/>
+                                <StyledInput type="text" onChange={(e) => setAuthor(e.target.value)} placeholder='Введите автора книги' required/>
+                                <StyledLabel>Тип книги</StyledLabel>
+                                <StyledInputOptions
+                                    type="text" list="options1" placeholder="Выберите тип книги" required/>
+                                <StyledDatalist id="options1">
+                                    <StyledOption value="Комиксы"/>
+                                    <StyledOption value="Манги"/>
+                                    <StyledOption value="Ранобэ"/>
+                                    <StyledOption value="Новеллы"/>
+                                    <StyledOption value="Самопомощи"/>
+                                    <StyledOption value="Научные"/>
+                                    <StyledOption value="Поучительные"/>
+                                    <StyledOption value="Литературные"/>
+                                    <StyledOption value="Лингвистические"/>
+                                    <StyledOption value="Технические"/>
+                                    <StyledOption value="Дидактические"/>
+                                    <StyledOption value="Информативные"/>
+                                    <StyledOption value="Религиозные"/>
+                                    <StyledOption value="Иллюстрированные"/>
+                                    <StyledOption value="Лектронные"/>
+                                    <StyledOption value="Поэтические"/>
+                                    <StyledOption value="Биографические"/>
+                                    <StyledOption value="Дидактические"/>
+                                    <StyledOption value="Художественные"/>
+                                </StyledDatalist>
+                                <StyledLabel>Жанр книги</StyledLabel>
+                                <StyledInputOptions
+                                    type="text" list="options2" placeholder="Выберите жанр книги" required/>
+                                <StyledDatalist id="options2">
+                                    <StyledOption value="Фэнтези"/>
+                                    <StyledOption value="Фантастика"/>
+                                    <StyledOption value="Детективы"/>
+                                    <StyledOption value="Любовные романы"/>
+                                    <StyledOption value="Эротика"/>
+                                    <StyledOption value="Триллеры"/>
+                                    <StyledOption value="Ужасы"/>
+                                    <StyledOption value="Приключения"/>
+                                    <StyledOption value="Проза"/>
+                                    <StyledOption value="Поэзия"/>
+                                    <StyledOption value="Бизнес литература"/>
+                                    <StyledOption value="Психология"/>
+                                    <StyledOption value="Искусство и культура"/>
+                                    <StyledOption value="Научная литература"/>
+                                    <StyledOption value="Хобби и досуг"/>
+                                    <StyledOption value="Звучение языков"/>
+                                    <StyledOption value="Компьютерная литература"/>
+                                    <StyledOption value="История"/>
+                                    <StyledOption value="Общество"/>
+                                    <StyledOption value="Мэмуары"/>
+                                    <StyledOption value="Красота и здоровье"/>
+                                    <StyledOption value="Книги для дошкольников"/>
+                                    <StyledOption value="Школьные учебники"/>
+                                    <StyledOption value="Детские детективы"/>
+                                    <StyledOption value="Энциклопедия"/>
+                                    <StyledOption value="Книги для подростков"/>
+                                </StyledDatalist>
+                                <StyledLabel>Состояние книги</StyledLabel>
+                                <StyledInputOptions
+                                    type="text" list="options3" placeholder="Выберите состояние книги" required/>
+                                <StyledDatalist id="options3">
+                                    <StyledOption value="Новая книга" />
+                                    <StyledOption value="Хорошее состояние" />
+                                    <StyledOption value="Приемлемое состояние" />
+                                </StyledDatalist>
                                 <StyledLabel>На каком языке написана книга</StyledLabel>
-                                <StyledInput type="text" onChange={(e) => setLanguage(e.target.value)} placeholder='Введите категорию книги'/>
+                                <StyledInput type="text" onChange={(e) => setLanguage(e.target.value)} placeholder='Введите категорию книги' required/>
                                 <StyledLabel>Описание книги</StyledLabel>
-                                <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги'/>
+                                <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
                                 <StyledButton type="submit" onClick={() => navigate("/")}>Публиковать книгу</StyledButton>
                             </AddNewBookBlockRight>
                         </StyledForm>
                     </AddNewBookInfoForm1>
                 </AddNewBookInfo>
-
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.2758859262003!2d74.56806517472857!3d42.88812567114868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec80cbe1495bb%3A0xa5ba93982013d43b!2zMTkg0JDRgNCw0LLQsNC90YHQutCw0Y8g0YPQu9C40YbQsCwgQmlzaGtlaywgS3lyZ3l6c3Rhbg!5e0!3m2!1sen!2sin!4v1692285503778!5m2!1sen!2sin"
-                width="600" height="450" allowFullScreen="" loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"></iframe>
-            {/*<iframe*/}
-            {/*    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.*/}
-            {/*    194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e673560804*/}
-            {/*    77!2sPT%20Kulkul%20Teknologi%20Internasional!5e0!3m2!1sen!2sid!4v1601138221085!5m2!1sen!2sid"*/}
-            {/*    width="300"*/}
-            {/*    height="450"*/}
-            {/*    style={{ border: 0 }}*/}
-            {/*    allowFullScreen=""*/}
-            {/*    aria-hidden="false"*/}
-            {/*    tabIndex="0"*/}
-            {/*/>*/}
-
         </AddNewBookPage>
     );
 };
