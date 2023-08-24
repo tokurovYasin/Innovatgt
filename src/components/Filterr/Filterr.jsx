@@ -1,13 +1,25 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React from "react";
 import { styled } from "styled-components";
-import ImgFilter from "../../assets/img/filter-img.png";
+// import ImgFilter from "../../assets/img/filterBg.jpeg";
 
+const FilterPage = styled.div`
+  // background-image: url("");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+`;
 const Container = styled.div`
+
   width: 1220px;
-  background: url(${ImgFilter});
+
   background-repeat: no-repeat;
   margin: auto;
+
+  max-width: 1220px;
+  padding: 0 15px;
+  margin: 0 auto;
+
 `;
 
 const Search_text = styled.div`
@@ -45,7 +57,7 @@ const Filterr = () => {
     setLocation(event.target.value);
   };
   return (
-    <div>
+    <FilterPage>
       <Container>
         <Container>
           <Search_text>
@@ -191,10 +203,10 @@ const Filterr = () => {
           </Search_filter>
         </Container>
         <MainImageBox>
-          <img src={ImgFilter} width="500" />
+          {/*<img width="500" />*/}
         </MainImageBox>
       </Container>
-    </div>
+    </FilterPage>
   );
 };
 

@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
 import {navigate} from "use-history";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import {idID} from "@mui/material/locale";
 
 const AccountPage = styled.div`
   background-image: url("${bgImg}");
@@ -164,17 +166,46 @@ const AllBooks = styled.div`
 
 
 const UserPage = (props) => {
-    const navigate = useNavigate();
-const [ user, setUser ] = useState()
+const navigate = useNavigate();
+const [ user, setUser ] = useState( [])
+
+
+
+useEffect( () =>{
+fetchData()
+
+},[] )
+    const fetchData =  async () => {
+    const response =  await axios.get(`http://34.173.33.226/api/v1/profiles/`)
+        setUser(response.data)
+        console.log(response.data)
+
+
+           }
+
+
     return (
         <AccountPage>
             <Container>
+                <div>
+                    {
+                        user.map(item => (
+                            <div key={item.id}>{item.email}</div>,
+                                <div>{item.username}</div>,
+                                <div>{item.id}</div>,
+                                <div>{item.id}</div>,
+                                <div>{item.city}</div>,
+                                <div>{item.city}</div>
+                        ))
+                    }
+                </div>
+
                 <User>
                     <UserImg>
                       <img src={Avatar} width="40" height="40" />
                     </UserImg>
                     <UserEdit>
-                           <UserName>Здравствуйте,Айганыш!</UserName>
+                           <UserName>Здравствуйте,!</UserName>
                      <UpdateProfil>Редактировать</UpdateProfil>
                     </UserEdit>
                 </User>

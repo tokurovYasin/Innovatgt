@@ -4,9 +4,8 @@ import ImgMain from "../../assets/img/main-image.png"
 import Search from "../../assets/img/search.png"
 import Phone from "../../assets/img/phone.png"
 import Time from "../../assets/img/time.png"
-import dataBook from "../../data.js"
 import axios from "axios";
-import ImgScroll from "../../assets/img/book scroll.png"
+import Scroll from "../../components/Scroll";
 
 
 const HomePageBlock =  styled.div`
@@ -80,6 +79,7 @@ const HowDoesWorkTitle = styled.h2`
   line-height: 51px;
   font-family: 'Philosopher', sans-serif;
   margin-bottom: 50px;
+  margin-top: 0;
 `;
 
 const HowDoesWorkBlock = styled.div`
@@ -135,20 +135,11 @@ const HowDoesWorkBlockInfoTime = styled.div`
   margin-left: 40px;
 `;
 
-const Scroll = styled.div`
-    margin: 100px 0;
+const ScrollComponent = styled.div`
+    
 `;
 
 const HomePage = () => {
-
-    const [allBooks, setAllBooks] = useState([])
-
-    // useEffect(() => {
-    //     axios(dataBook)
-    //         .then((res) => setAllBooks(res.data.results))
-    //     console.log(allBooks)
-    // },[])
-
 
     return (
         <HomePageBlock>
@@ -198,13 +189,9 @@ const HomePage = () => {
                     </HowDoesWorkBlockInfoTime>
                 </HowDoesWorkBlock>
             </Container>
-            <div>
-                <Container>
-                    <Scroll>
-                        <img src={ImgScroll} width="100%" height="auto"/>
-                    </Scroll>
-                </Container>
-            </div>
+            <ScrollComponent>
+                <Scroll/>
+            </ScrollComponent>
         </HomePageBlock>
     );
 };

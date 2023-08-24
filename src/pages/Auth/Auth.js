@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import Login from "../Login";
 import Register from "../Register";
@@ -8,6 +8,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import UserPage from "../UserPage";
 import {useHistory} from "use-history";
+import {createAuthProvider} from "react-token-auth";
 
 const Box = styled.div`
   display: flex;
@@ -27,8 +28,44 @@ const AuthRootComponent = () => {
     const [ username,setUserName ] = useState("")
     const [ city,setCity ] = useState("")
 
+    const access =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkyOTMxMDgzLCJpYXQiOjE2OTI4OTUwODMsImp0aSI6ImRmODlhN2YyMmQ5NjQyMDY5ZjE0MWRlZDMxNGFkODA1IiwidXNlcl9pZCI6M30.rDzeKi090in4z8UJ4oj50uH0EfJ6bT6MJ1EXWk9F9FI"
+
+    fetch('http://34.173.33.226/api/v1/login/', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${access}`
+  }
+})
+.then(response => {
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error('Request failed');
+  }
+})
+.then(data => {
+  // Обработка успешного ответа
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
+// const { token } = createAuthProvider({
+//         getAccessToken: session => session.access,
+//         storage: localStorage,
+//         onUpdateToken: token =>
+//             fetch('/update-token', {
+//                 method: 'POST',
+//                 body: token.refresh,
+//             }).then(r => r.json()),
+//     });
+
+
+
+
+
+
     const location = useLocation()
-    // const history = useHistory()
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(location.pathname === "/login") {
@@ -36,20 +73,8 @@ const AuthRootComponent = () => {
            email,
            password
        }
-       const user = await axios.post("http://34.173.33.226/api/v1/login/", userData )
-        //    .then(response =>{
-        //        console.log("response:",response.data)
-        //
-        //    }).catch(
-        //        error =>{ console.error(error) }
-        //    )
-        // console.log(user.data)
-
-        //         .then(({ data }) => console.log("successfully", data))
-        //         .catch(e => console.log("failed" , e))
-            console.log(userData)
-               alert("Вы вошли в свой аккаунт!")
-
+       const user = await axios.post("http://34.173.33.226/api/v1/login/", userData)
+            alert("Вы вошли в свой аккаунт!")
 
         } else {
             if (password === password_confirm) {
@@ -92,6 +117,7 @@ const AuthRootComponent = () => {
     });
 
     return (
+
 
         <Box onSubmit={handleSubmit}>
             {
