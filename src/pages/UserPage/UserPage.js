@@ -159,10 +159,6 @@ const AllBooks = styled.div`
 `;
 
 
-
-
-
-
 const UserPage = (props) => {
     const navigate = useNavigate();
        const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props

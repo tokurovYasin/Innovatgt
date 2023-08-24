@@ -19,6 +19,7 @@
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
+    "react-token-auth": "^2.3.8",
     "redux": "^4.2.1",
     "styled-components": "^6.0.7",
     "toaster": "^0.1.2",

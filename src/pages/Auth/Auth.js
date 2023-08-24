@@ -47,7 +47,8 @@ const AuthRootComponent = () => {
 
         //         .then(({ data }) => console.log("successfully", data))
         //         .catch(e => console.log("failed" , e))
-            console.log(userData)
+
+            console.log(user.data)
                alert("Вы вошли в свой аккаунт!")
 
 

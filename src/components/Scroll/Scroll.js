@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Scroller from "react-slick"
 import axios from "axios";
 import {data} from "../../data.js";
+import {navigate} from "use-history";
 
 const ScrollBlock = styled.div`
   overflow-x: auto;
@@ -33,12 +34,12 @@ const ScrollItemBookImg = styled.img`
 `;
 
 const ScrollItemBookInfo = styled.div`
-    padding: 10px 15px 25px;
+  padding: 10px 15px 25px;
   text-align: center;
 `;
 
 const Title = styled.h3`
-    margin-top: 10px;
+  margin-top: 10px;
 `;
 const Author = styled.h4`
     
@@ -65,9 +66,8 @@ const Scroll = () => {
         fetchData()
     }, [])
 
-    const fetchData = async () => {
+    const fetchData = () => {
         const response = {data}
-        console.log(response.data)
         setScrollData(response.data)
         // try {
         //
@@ -99,7 +99,7 @@ const Scroll = () => {
             <ScrollAllBooks>
                 {
                     scrollData.map(item => (
-                        <ScrollItem key={item.id}>
+                        <ScrollItem key={item.id} onClick={() => navigate("/book-detail/{id}")}>
                             <ScrollItemBookImg src={item.img}/>
                             <ScrollItemBookInfo>
                                 <Title>{item.title}</Title>
@@ -107,7 +107,7 @@ const Scroll = () => {
                                 <Genre>{item.genre}</Genre>
                                 <Description>{item.description}</Description>
                                 <Amount>{item.amount}</Amount>
-                                <button>Одожить книгу</button>
+                                <button>Одолжить книгу</button>
                             </ScrollItemBookInfo>
                         </ScrollItem>
                     ))

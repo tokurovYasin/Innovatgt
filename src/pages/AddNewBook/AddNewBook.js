@@ -5,6 +5,7 @@ import {navigate} from "use-history";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import BgImage from "../../assets/img/addBookBg.jpeg"
+import {createAuthProvider} from "react-token-auth";
 
 const AddNewBookPage = styled.div`
   background-image: url("${BgImage}");
@@ -177,6 +178,16 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
+    const { token } = createAuthProvider({
+        getAccessToken: session => session.access,
+        storage: localStorage,
+        onUpdateToken: newToken =>
+            fetch('/update-token', {
+                method: 'POST',
+                body: newToken.refresh,
+            }).then(r => r.json()),
+    });
+
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
@@ -196,8 +207,25 @@ const AddNewBook = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData)
-        console.log(book.data)
+        try {
+            const response = await axios.post(
+                'http://34.173.33.226/api/v1/add-book/',
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token.access}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+
+            console.log('Book created:', response.data);
+            // Handle success or redirect as needed
+        } catch (error) {
+            console.error('Error creating book:', error);
+        }
+        // const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, token)
+        // console.log(book.data)
     }
 
     const handleChange = (e) => {
@@ -317,7 +345,6 @@ const AddNewBook = () => {
                                 <StyledDatalist id="option4">
                                     <StyledOption value="Кыргызский"/>
                                     <StyledOption value="Английский"/>
-                                    <StyledOption value="Кыргызский"/>
                                     <StyledOption value="Китайский"/>
                                     <StyledOption value="Русский"/>
                                     <StyledOption value="Неменцкий"/>
