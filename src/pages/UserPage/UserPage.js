@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
@@ -160,8 +160,11 @@ const AllBooks = styled.div`
 
 
 const UserPage = (props) => {
+
+
+
     const navigate = useNavigate();
-       const { setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
+       const { setUserDataToken, setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
     return (
         <AccountPage>
             <Container>
@@ -182,6 +185,7 @@ const UserPage = (props) => {
                     <UserChange>Изменить</UserChange>
                     <UserLogout>Выйти из аккаунта</UserLogout>
                 </UserDesc>
+                    <div>{setUserDataToken}</div>
                     <UserBook>
                         Моя библиотека
                         <BookHave>

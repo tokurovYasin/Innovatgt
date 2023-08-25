@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import {navigate} from "use-history";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import BgImage from "../../assets/img/addBookBg.jpeg"
-import {createAuthProvider} from "react-token-auth";
+import { createAuthProvider } from 'react-token-auth';
 
 const AddNewBookPage = styled.div`
   background-image: url("${BgImage}");
@@ -178,16 +178,6 @@ const StyledButton = styled.button`
 
 const AddNewBook = () => {
 
-    const { token } = createAuthProvider({
-        getAccessToken: session => session.access,
-        storage: localStorage,
-        onUpdateToken: newToken =>
-            fetch('/update-token', {
-                method: 'POST',
-                body: newToken.refresh,
-            }).then(r => r.json()),
-    });
-
     const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
     const [title, setTitle] = useState('')
@@ -197,8 +187,8 @@ const AddNewBook = () => {
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
 
+
     const fileComponent = useRef()
-    const formData = { image, imgUrl,title, condition, author, genre, language, description}
 
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
@@ -206,28 +196,25 @@ const AddNewBook = () => {
     }
 
     const handleSubmit = async (e) => {
+        const formData  = new FormData()
+        formData.append("image",image)
+        formData.append("title", title)
+        formData.append("condition", condition)
+        formData.append("author", author)
+        formData.append("genre", genre)
+        formData.append("language", language)
+        formData.append("description", description)
+        console.log(image)
+        const book = JSON.parse(localStorage.getItem("user"))
         e.preventDefault()
-        try {
-            const response = await axios.post(
-                'http://34.173.33.226/api/v1/add-book/',
-                formData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token.access}`,
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
+        const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
 
-            console.log('Book created:', response.data);
-            // Handle success or redirect as needed
-        } catch (error) {
-            console.error('Error creating book:', error);
-        }
-        // const book = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, token)
-        // console.log(book.data)
-    }
-
+            headers: {
+                Authorization: `Bearer ${book.access}`,
+            },
+        });
+        console.log('Book created:', response.data);
+    };
     const handleChange = (e) => {
         e.preventDefault()
         if (e.target.files && e.target.files.length) {
@@ -248,27 +235,6 @@ const AddNewBook = () => {
     const handleDragEmpty = (e) => {
         e.preventDefault()
     }
-
-    const formik = useFormik({
-        initialValues: {
-            title: '',
-            author: '',
-            genre: '',
-            language: '',
-            description: '',
-
-        },
-        validationSchema: Yup.object({
-            title: Yup.string().min(4,'название книги слишком короткое').required('Обязатеьное поле'),
-            author: Yup.string().min(6, "название автора слишком короткое").required('Обязатеьное поле'),
-            genre: Yup.string().min(6, "название жанра слишком короткое").required('Обязатеьное поле'),
-            language: Yup.string().min(4, "некорректный язык книги").required('Обязатеьное поле'),
-            description: Yup.string().min(20, "слишком короткое описание книги").required('Обязатеьное поле'),
-        }),
-        onSubmit: values => {
-
-        },
-    });
 
     return (
         <AddNewBookPage>
@@ -307,11 +273,10 @@ const AddNewBook = () => {
                                     <StyledOption value="Фэнтези"/>
                                     <StyledOption value="Фантастика"/>
                                     <StyledOption value="Детективы"/>
-                                    <StyledOption value="Любовные романы"/>
-                                    <StyledOption value="Эротика"/>
                                     <StyledOption value="Триллеры"/>
                                     <StyledOption value="Ужасы"/>
                                     <StyledOption value="Приключения"/>
+                                    <StyledOption value="Любовные романы"/>
                                     <StyledOption value="Проза"/>
                                     <StyledOption value="Поэзия"/>
                                     <StyledOption value="Бизнес литература"/>

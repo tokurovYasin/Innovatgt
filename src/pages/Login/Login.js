@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {navigate} from "use-history";
 import ImgLogin from "../../assets/img/logina2.jpeg"
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg";
+import UserPage from "../UserPage";
 
 const Container = styled.div`
  //background-image: linear-gradient(to left top, #7fb0ed, #668bc8, #4f67a3, #39457f, #24255b);;
@@ -23,11 +24,8 @@ const Container = styled.div`
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
-<<<<<<< HEAD
-
-=======
   position: relative;
->>>>>>> 0462854905974e77658b933a77c97649b3cb45ff
+
 `;
 
 const CreateAccTitle = styled.div`
@@ -94,11 +92,11 @@ const Button = styled.button`
  
  `;
 
-
-
-
 const Login = (props) => {
+
     const {setPassword, setEmail} = props
+
+
     return (
         <Container>
             <CreateAccount>
