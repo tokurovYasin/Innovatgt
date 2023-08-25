@@ -84,7 +84,7 @@ const Login = (props) => {
                 <Form>
                     <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
                     <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button type="submit" onClick={() => navigate("/userpage")}>Войти</Button>
+                    <Button type="submit"  >Войти</Button>
                     <Desc onClick={() => navigate("/forgotpassword")}><span>Не помню пароль</span></Desc>
                     <Desc onClick={() => navigate("/register")}>У вас нет аккаунта? <span>Регистрация</span></Desc>
                 </Form>

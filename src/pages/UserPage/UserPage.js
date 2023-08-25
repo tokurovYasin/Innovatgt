@@ -161,10 +161,6 @@ const AllBooks = styled.div`
 `;
 
 
-
-
-
-
 const UserPage = (props) => {
 const navigate = useNavigate();
 const [ user, setUser ] = useState( [])
@@ -184,7 +180,7 @@ fetchData()
            }
 
 
-    return (
+           return (
         <AccountPage>
             <Container>
                 <div>

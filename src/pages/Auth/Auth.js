@@ -28,41 +28,6 @@ const AuthRootComponent = () => {
     const [ username,setUserName ] = useState("")
     const [ city,setCity ] = useState("")
 
-    const access =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkyOTMxMDgzLCJpYXQiOjE2OTI4OTUwODMsImp0aSI6ImRmODlhN2YyMmQ5NjQyMDY5ZjE0MWRlZDMxNGFkODA1IiwidXNlcl9pZCI6M30.rDzeKi090in4z8UJ4oj50uH0EfJ6bT6MJ1EXWk9F9FI"
-
-    fetch('http://34.173.33.226/api/v1/login/', {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${access}`
-  }
-})
-.then(response => {
-  if (response.ok) {
-    return response.json();
-  } else {
-    throw new Error('Request failed');
-  }
-})
-.then(data => {
-  // Обработка успешного ответа
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
-// const { token } = createAuthProvider({
-//         getAccessToken: session => session.access,
-//         storage: localStorage,
-//         onUpdateToken: token =>
-//             fetch('/update-token', {
-//                 method: 'POST',
-//                 body: token.refresh,
-//             }).then(r => r.json()),
-//     });
-
-
-
-
 
 
     const location = useLocation()
@@ -75,7 +40,8 @@ const AuthRootComponent = () => {
        }
        const user = await axios.post("http://34.173.33.226/api/v1/login/", userData)
             alert("Вы вошли в свой аккаунт!")
-
+            console.log(user.data)
+               alert("Вы вошли в свой аккаунт!")
         } else {
             if (password === password_confirm) {
                 const userData = {
@@ -94,7 +60,7 @@ const AuthRootComponent = () => {
         }
     }
 
-        const formik = useFormik({
+    const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
@@ -117,14 +83,12 @@ const AuthRootComponent = () => {
     });
 
     return (
-
-
         <Box onSubmit={handleSubmit}>
             {
                 location.pathname === "/login"
-                    ? <Login setEmail = {setEmail} setPassword = {setPassword}/> : location.pathname === "/register"
+                    ? <Login setEmail = {setEmail}  setPassword = {setPassword}/> : location.pathname === "/register"
                         ? <Register setEmail = {setEmail} setPassword = {setPassword} setUserName = {setUserName} setNumber = {setNumber}
-                                    setPassword_confirm  = {setPassword_confirm } setCity = {setCity}  />  : null }
+                                    setPassword_confirm  = {setPassword_confirm } setCity = {setCity}   />  : null }
 
         </Box>
 
