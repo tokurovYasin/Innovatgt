@@ -9,6 +9,7 @@ import ImgWhats from "../../assets/img/whatsup.png";
 
 const FooterBlock = styled.div`
   background-color: #152033;
+  padding-bottom: 30px;
 `;
 
 const Container = styled.div`

@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import Scroller from "react-slick"
 import axios from "axios";
-import {data} from "../../data.js";
 import {navigate} from "use-history";
 
 const ScrollBlock = styled.div`
@@ -25,10 +23,11 @@ const ScrollItem = styled.a`
   border-radius: 25px;
   cursor: pointer;
   margin: 0 30px;
+  width: 300px;
 `;
 
 const ScrollItemBookImg = styled.img`
-  width: 260px;
+  width: 100%;
   height: 360px;
   border-radius: 24px;
 `;
@@ -38,7 +37,7 @@ const ScrollItemBookInfo = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h3`
+const Title = styled.h2`
   margin-top: 10px;
 `;
 const Author = styled.h4`
@@ -66,32 +65,11 @@ const Scroll = () => {
         fetchData()
     }, [])
 
-    const fetchData = () => {
-        const response = {data}
-        setScrollData(response.data)
-        // try {
-        //
-        //     const response = await axios.get({data})
-        //     console.log(response.data)
-        //     setScrollData(response.data)
-        // } catch (error) {
-        //     console.error("Error fetching data:", error)
-        // }
+    const fetchData = async () => {
+        const token = JSON.parse(localStorage.getItem("user"))
+        const response = await axios.get('http://34.173.33.226/api/v1/all-books/')
+        setScrollData(response.data.results);
     }
-
-    const settings = {
-        className: "center",
-        infinite: true,
-        centerPadding: "60px",
-        slidesToShow: 5,
-        swipeToSlide: true,
-        afterChange: function(index) {
-            console.log(
-                `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-            );
-        }
-    };
-
 
     return (
         <ScrollBlock>
@@ -100,12 +78,11 @@ const Scroll = () => {
                 {
                     scrollData.map(item => (
                         <ScrollItem key={item.id} onClick={() => navigate("/book-detail/{id}")}>
-                            <ScrollItemBookImg src={item.img}/>
+                            <ScrollItemBookImg src={item.image}/>
                             <ScrollItemBookInfo>
                                 <Title>{item.title}</Title>
                                 <Author>{item.author}</Author>
-                                <Genre>{item.genre}</Genre>
-                                <Description>{item.description}</Description>
+                                <Genre>{item.genre.title}</Genre>
                                 <Amount>{item.amount}</Amount>
                                 <button>Одолжить книгу</button>
                             </ScrollItemBookInfo>

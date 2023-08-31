@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
 import {navigate} from "use-history";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import {array} from "yup";
 
 const AccountPage = styled.div`
   background-image: url("${bgImg}");
@@ -159,15 +161,51 @@ const AllBooks = styled.div`
 `;
 
 
-const UserPage = (props) => {
+const UserPage = () => {
 
+    const [users, setUsers] = useState([]);
+
+
+    useEffect( () =>{
+        fetchData()
+
+    },[] )
+
+    const fetchData =  async () => {
+                try {
+                    const token = JSON.parse(localStorage.getItem("user"));
+
+                    const allUsers = await  axios.get("http://34.173.33.226/api/v1/userpage/", {
+
+                        headers: {
+                            Authorization: `Bearer ${token.access}`,
+                        },
+                    })
+                    setUsers(allUsers.data)
+
+                    console.log(allUsers.data)
+
+                } catch (error) {
+                    console.error('Error fetching user profiles:', error);
+        }
+    }
 
 
     const navigate = useNavigate();
-       const { setUserDataToken, setEmail, setPassword, setRepeatPassword, setNumber, setName, setCity } = props
+
     return (
         <AccountPage>
             <Container>
+                <div>
+                    {users.map((user, index) => (
+                        <div key={index}>
+                            {/* Render user profile data */}
+                            <h2>id :{user.id}</h2>
+                            <p>Email: {user.email}</p>
+                            {/* Add more profile details here */}
+                        </div>
+                    ))}
+                </div>
                 <User>
                     <UserImg>
                       <img src={Avatar} width="40" height="40" />
@@ -185,7 +223,6 @@ const UserPage = (props) => {
                     <UserChange>Изменить</UserChange>
                     <UserLogout>Выйти из аккаунта</UserLogout>
                 </UserDesc>
-                    <div>{setUserDataToken}</div>
                     <UserBook>
                         Моя библиотека
                         <BookHave>

@@ -205,12 +205,11 @@ const AddNewBook = () => {
         formData.append("language", language)
         formData.append("description", description)
         console.log(image)
-        const book = JSON.parse(localStorage.getItem("user"))
-        e.preventDefault()
+        const token = JSON.parse(localStorage.getItem("user"))
         const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
 
             headers: {
-                Authorization: `Bearer ${book.access}`,
+                Authorization: `Bearer ${token.access}`,
             },
         });
         console.log('Book created:', response.data);
@@ -330,7 +329,7 @@ const AddNewBook = () => {
                                 </StyledDatalist>
                                 <StyledLabel>Описание книги</StyledLabel>
                                 <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
-                                <StyledButton type="submit" onClick={() => navigate("/")}>Публиковать книгу</StyledButton>
+                                <StyledButton type="submit" onClick={() => navigate("/userpage")}>Публиковать книгу</StyledButton>
                             </AddNewBookBlockRight>
                         </StyledForm>
                     </AddNewBookInfoForm1>
