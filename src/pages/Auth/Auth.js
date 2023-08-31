@@ -29,19 +29,21 @@ const AuthRootComponent = () => {
     const [ city,setCity ] = useState("")
 
 
-
     const location = useLocation()
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         if(location.pathname === "/login") {
                 const userData = {
            email,
            password
        }
        const user = await axios.post("http://34.173.33.226/api/v1/login/", userData)
-            alert("Вы вошли в свой аккаунт!")
             console.log(user.data)
-               alert("Вы вошли в свой аккаунт!")
+            localStorage.setItem("user",JSON.stringify(user.data))
+            alert("Вы вошли в свой аккаунт!")
+
+
         } else {
             if (password === password_confirm) {
                 const userData = {
@@ -58,6 +60,7 @@ const AuthRootComponent = () => {
                 throw new Error("У вас не совпадают пароли")
             }
         }
+
     }
 
     const formik = useFormik({

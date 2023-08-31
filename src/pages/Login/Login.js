@@ -2,6 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg";
 import {useNavigate} from "react-router-dom";
+import UserPage from "../UserPage";
+
 
 const Container = styled.div`
   margin-top: 30px;
@@ -14,6 +16,7 @@ const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
   position: relative;
+
 `;
 
 const CreateAccTitle = styled.div`
@@ -68,12 +71,12 @@ const Button = styled.button`
  const ImgContainer = styled.div`
  `;
 
-
-
-
 const Login = (props) => {
+
     const {setPassword, setEmail} = props
+
     const navigate = useNavigate();
+
     return (
         <Container>
             <CreateAccount>
