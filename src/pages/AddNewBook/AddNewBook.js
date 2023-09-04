@@ -203,7 +203,6 @@ const AddNewBook = () => {
         formData.append("genre", genre)
         formData.append("language", language)
         formData.append("description", description)
-
         const token = JSON.parse(localStorage.getItem("user"))
 
         const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {

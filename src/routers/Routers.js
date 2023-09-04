@@ -10,22 +10,23 @@ import NotFound from "../pages/NotFound";
 import AllBooks from "../components/AllBooks";
 import ForgotPassword from "../components/ForgotPassword";
 
-const Routers = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Navigate to={"/home"} />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/register" element={<AuthRootComponent />} />
-      <Route path="/login" element={<AuthRootComponent />} />
-      <Route path="/add-book" element={<AddNewBook />} />
-      <Route path="/book-detail/:id" element={<AboutBook />} />
-      <Route path="/userpage" element={<UserPage />} />
-      <Route path="/filter" element={<Filter />} />
-      <Route path="/all-books" element={<AllBooks />} />
-      <Route path="/forgotpassword" element={<ForgotPassword />}/>
-      <Route path="*" element={<NotFound />}/>
-    </Routes>
-  );
+  const Routers = () => {
+      return (
+          <Routes>
+              <Route path="/" element={<Navigate to={"/home"} />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/register" element={<AuthRootComponent />} />
+              <Route path="/login" element={<AuthRootComponent />} />
+              <Route path="/add-book" element={<AddNewBook />} />
+              <Route path="/about-Book" element={<AboutBook/>} />
+              <Route path="/book-detail/:id" element={<AboutBook />} />
+              <Route path="/userpage" element={<UserPage />} />
+              <Route path="/filter" element={<Filter />} />
+              <Route path="/all-books" element={<AllBooks />} />
+              <Route path="/forgotpassword" element={<ForgotPassword />} />
+              <Route path="*" element={<NotFound />} />
+          </Routes>
+      )
 };
 
 export default Routers;
