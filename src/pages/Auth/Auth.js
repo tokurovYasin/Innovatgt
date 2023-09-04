@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import Login from "../Login";
 import Register from "../Register";
@@ -8,6 +8,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import UserPage from "../UserPage";
 import {useHistory} from "use-history";
+import {createAuthProvider} from "react-token-auth";
 
 const Box = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const AuthRootComponent = () => {
 
     const location = useLocation()
     const handleSubmit = async (e) => {
+        e.preventDefault()
         if(location.pathname === "/login") {
                 const userData = {
            email,
@@ -39,6 +41,7 @@ const AuthRootComponent = () => {
             console.log(user.data)
             localStorage.setItem("user",JSON.stringify(user.data))
             alert("Вы вошли в свой аккаунт!")
+
 
         } else {
             if (password === password_confirm) {
@@ -59,7 +62,7 @@ const AuthRootComponent = () => {
 
     }
 
-        const formik = useFormik({
+    const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
@@ -82,13 +85,12 @@ const AuthRootComponent = () => {
     });
 
     return (
-
         <Box onSubmit={handleSubmit}>
             {
                 location.pathname === "/login"
-                    ? <Login setEmail = {setEmail} setPassword = {setPassword}/> : location.pathname === "/register"
+                    ? <Login setEmail = {setEmail}  setPassword = {setPassword}/> : location.pathname === "/register"
                         ? <Register setEmail = {setEmail} setPassword = {setPassword} setUserName = {setUserName} setNumber = {setNumber}
-                                    setPassword_confirm  = {setPassword_confirm } setCity = {setCity}  />  : null }
+                                    setPassword_confirm  = {setPassword_confirm } setCity = {setCity}   />  : null }
 
         </Box>
 

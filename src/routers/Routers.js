@@ -7,7 +7,8 @@ import AuthRootComponent from "../pages/Auth";
 import UserPage from "../pages/UserPage";
 import Filter from "../components/Filter/Filter";
 import NotFound from "../pages/NotFound";
-import BookList from "../components/BookList";
+import AllBooks from "../components/AllBooks";
+import ForgotPassword from "../components/ForgotPassword";
 
 const Routers = () => {
   return (
@@ -17,10 +18,11 @@ const Routers = () => {
       <Route path="/register" element={<AuthRootComponent />} />
       <Route path="/login" element={<AuthRootComponent />} />
       <Route path="/add-book" element={<AddNewBook />} />
-      <Route path="/about-Book" element={<AboutBook />} />
+      <Route path="/book-detail/:id" element={<AboutBook />} />
       <Route path="/userpage" element={<UserPage />} />
-        <Route path="/all-books" element={<BookList />} />
       <Route path="/filter" element={<Filter />} />
+      <Route path="/all-books" element={<AllBooks />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />}/>
       <Route path="*" element={<NotFound />}/>
     </Routes>
   );

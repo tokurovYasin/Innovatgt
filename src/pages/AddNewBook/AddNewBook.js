@@ -177,9 +177,8 @@ const StyledButton = styled.button`
 `;
 
 const AddNewBook = () => {
-
-    const [image, setImage] = useState()
     const [imgUrl, setImgUrl] = useState()
+    const [image, setImage] = useState()
     const [title, setTitle] = useState('')
     const [condition, setCondition] = useState()
     const [author, setAuthor] = useState('')
@@ -187,9 +186,9 @@ const AddNewBook = () => {
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
 
-
     const fileComponent = useRef()
 
+    const formData = { image, title, condition, author, genre, language, description}
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
         setImgUrl(fileReader.result)
@@ -204,10 +203,10 @@ const AddNewBook = () => {
         formData.append("genre", genre)
         formData.append("language", language)
         formData.append("description", description)
-        console.log(image)
-        const token = JSON.parse(localStorage.getItem("user"))
-        const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
 
+        const token = JSON.parse(localStorage.getItem("user"))
+
+        const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
             headers: {
                 Authorization: `Bearer ${token.access}`,
             },
@@ -226,7 +225,7 @@ const AddNewBook = () => {
     const handleDrop = (e) => {
         e.preventDefault()
         if (e.dataTransfer.files && e.dataTransfer.files.length) {
-            setImage(e.dataTransfer.files[0])
+
             fileReader.readAsDataURL(e.dataTransfer.files[0])
         }
     }
@@ -234,6 +233,8 @@ const AddNewBook = () => {
     const handleDragEmpty = (e) => {
         e.preventDefault()
     }
+
+
 
     return (
         <AddNewBookPage>
@@ -244,16 +245,18 @@ const AddNewBook = () => {
                             <AddNewBookBlockLeft>
                                 <AddBookImageLabel>Изображение книги</AddBookImageLabel>
                                 <AddNewBookImgBox>
-                                    <AddNewBookImgInput type="file" ref={fileComponent} onChange={handleChange}/>
+                                    <AddNewBookImgInput type="file"  name="image" ref={fileComponent} onChange={handleChange}/>
                                     <AddNewBookImage>
                                         <AddNewBookImageText>
-                                            {image ?
+
+                                        {image ?
                                                 <Image src={imgUrl ? imgUrl : "no_photo.jpg"}
                                                        onDrop={handleDrop}
                                                        onDragEnter={handleDragEmpty}
                                                        onDragOver={handleDragEmpty}
                                                 />
                                                 :
+
                                                 <SpanImg>Нажмите, чтобы выбрать картину или перетащите картину сюда</SpanImg>
                                             }
                                         </AddNewBookImageText>

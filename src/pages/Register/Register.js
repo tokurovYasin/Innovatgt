@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {navigate} from "use-history";
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg"
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const RegisterPage = styled.div`
   display: flex;
@@ -93,7 +94,7 @@ const InputTitle = styled.div`
 
 const Register = (props) =>{
     const { setEmail, setPassword, setPassword_confirm, setNumber, setUserName, setCity } = props
-
+const navigate = useNavigate();
     return (
         <RegisterPage>
         <Container>
@@ -113,8 +114,8 @@ const Register = (props) =>{
                         <Input placeholder="Телефон" onChange={(e) => setNumber(e.target.value)} />
                               <InputTitle>Выберите ваш город</InputTitle>
                         <Input placeholder="Город" onChange={(e) => setCity(e.target.value)} />
-                          <Button type="submit" onClick={() => navigate("/")} >Зарегестрироваться</Button>
-                          <Desc>У вас есть аккаунт? <span>Авторизация</span></Desc>
+                          <Button type="submit" >Зарегестрироваться</Button>
+                          <Desc onClick={() => navigate("/login")}>У вас есть аккаунт?<span>Авторизация</span></Desc>
                     </Form>
                </CreateAccount>
                   <ImgContainer>

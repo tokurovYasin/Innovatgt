@@ -10,9 +10,16 @@ const FilterPage = styled.div`
   height: 100vh;
 `;
 const Container = styled.div`
+
+  width: 1220px;
+
+  background-repeat: no-repeat;
+  margin: auto;
+
   max-width: 1220px;
   padding: 0 15px;
   margin: 0 auto;
+
 `;
 
 const Search_text = styled.div`

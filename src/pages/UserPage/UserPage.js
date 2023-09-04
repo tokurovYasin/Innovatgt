@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
-import {navigate} from "use-history";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {array} from "yup";
@@ -26,8 +25,8 @@ const User = styled.div`
   display: flex;
   align-items: center;
   margin-top: 30px;
-  margin-bottom: 50px ;  
-  
+  margin-bottom: 50px;
+
 `;
 const UserImg = styled.div`
   img {
@@ -61,17 +60,17 @@ const UserEmail = styled.div`
 `;
 const UserNumber = styled.div`
   margin-bottom: 15px;
- font-size: 20px;
-    border: 1px solid #b7b2b2;;
-   padding: 4px 10px;
+  font-size: 20px;
+  border: 1px solid #b7b2b2;;
+  padding: 4px 10px;
   border-radius: 4px;
-    color: #57595b;
+  color: #57595b;
 `;
 const UserLocation = styled.div`
   margin-bottom: 15px;
   font-size: 20px;
-    border: 1px solid #b7b2b2;
-   padding: 4px 10px;
+  border: 1px solid #b7b2b2;
+  padding: 4px 10px;
   border-radius: 4px;
   color: #57595b;
 `;
@@ -81,7 +80,7 @@ const UserBook = styled.div`
   margin-bottom: 10px;
   font-size: 20px;
   font-family: 'Jost', sans-serif;
-  
+
 
 `;
 const UserChange = styled.div`
@@ -92,7 +91,7 @@ const UserChange = styled.div`
   background-color: #24255B;
   padding: 10px 80px;
   border-radius: 25px;
-    font-family: 'Jost', sans-serif;
+  font-family: 'Jost', sans-serif;
 
 
 `;
@@ -107,7 +106,7 @@ const UserLogout = styled.div`
   font-family: 'Jost', sans-serif;
 `;
 const BookHave = styled.div`
-    font-size: 16px;
+  font-size: 16px;
   color: #4f4d4d;
   margin: 20px 0;
 
@@ -124,9 +123,10 @@ const Button = styled.div`
 
 `;
 const BackgroundImg = styled.div`
-  background-image:  url("${bgImg}");
+  background-image: url("${bgImg}");
   background-size: cover;
-  img{
+
+  img {
     height: 300px;
     width: 300px;
   }
@@ -145,11 +145,9 @@ const UpdateProfil = styled.div`
   width: 120px;
 `;
 const UserEdit = styled.div`
-
-
 `;
 const BookTitle = styled.div`
-margin-bottom: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
 `;
 const AllBooks = styled.div`
@@ -160,59 +158,39 @@ const AllBooks = styled.div`
 
 `;
 
-
 const UserPage = () => {
-
-    const [users, setUsers] = useState([]);
-
-
-    useEffect( () =>{
-        fetchData()
-
-    },[] )
-
-    const fetchData =  async () => {
-                try {
-                    const token = JSON.parse(localStorage.getItem("user"));
-
-                    const allUsers = await  axios.get("http://34.173.33.226/api/v1/userpage/", {
-
-                        headers: {
-                            Authorization: `Bearer ${token.access}`,
-                        },
-                    })
-                    setUsers(allUsers.data)
-
-                    console.log(allUsers.data)
-
-                } catch (error) {
-                    console.error('Error fetching user profiles:', error);
-        }
-    }
-
-
     const navigate = useNavigate();
+    const [profile, setProfile] = useState([])
+    const token = JSON.parse(localStorage.getItem("user"))
+
+ useEffect( () => {
+     fetchUserData()
+ }, [])
+       const fetchUserData = async () => {
+         try {
+             const response = await axios.get("http://34.173.33.226/api/v1/userpage/", {
+                 headers: {
+                    Authorization: `Bearer ${token.access}`
+                 },
+             });
+             setProfile(response.data.results[0]);
+             console.log(response.data.results)
+         } catch (error) {
+             console.log("Error fetching user data" , error)
+         }
+     };
 
     return (
         <AccountPage>
             <Container>
-                <div>
-                    {users.map((user, index) => (
-                        <div key={index}>
-                            {/* Render user profile data */}
-                            <h2>id :{user.id}</h2>
-                            <p>Email: {user.email}</p>
-                            {/* Add more profile details here */}
-                        </div>
-                    ))}
-                </div>
+                <p> Username: {profile.username}</p>
                 <User>
                     <UserImg>
-                      <img src={Avatar} width="40" height="40" />
+                        <img src={Avatar} width="40" height="40"/>
                     </UserImg>
                     <UserEdit>
-                           <UserName>Здравствуйте,Айганыш!</UserName>
-                     <UpdateProfil>Редактировать</UpdateProfil>
+                        <UserName>Здравствуйте,{profile.username}!</UserName>
+                        <UpdateProfil>Редактировать</UpdateProfil>
                     </UserEdit>
                 </User>
                 <BoxInfo>
@@ -236,10 +214,8 @@ const UserPage = () => {
                         </Button>
                     </UserBook>
                 </BoxInfo>
-               <BackgroundImg>
-
-               </BackgroundImg>
-
+                <BackgroundImg>
+                </BackgroundImg>
             </Container>
         </AccountPage>
     );
