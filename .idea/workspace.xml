@@ -1,13 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="9d0b362f-7e8c-415a-84d6-8f6bb25431d2" name="Changes" comment="" />
+=======
+    <list default="true" id="9d0b362f-7e8c-415a-84d6-8f6bb25431d2" name="Changes" comment="">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0462854905974e77658b933a77c97649b3cb45ff
+      <change afterPath="$PROJECT_DIR$/src/assets/img/Bookmark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/Search_light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/filtration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/logo kitepter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/src/assets/img/Bell_pin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/bg-image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/image 15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/image 21.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/main-image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.js" afterDir="false" />
+>>>>>>> 1045a7b28d2eaeeea49fde23d4dbbb3647779209
+=======
+>>>>>>> 0462854905974e77658b933a77c97649b3cb45ff
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/AddNewBook/AddNewBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/AddNewBook/AddNewBook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/UserPage/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UserPage/UserPage.js" afterDir="false" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/routers/Routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/Routers.js" afterDir="false" />
+=======
+>>>>>>> 1045a7b28d2eaeeea49fde23d4dbbb3647779209
+=======
+      <change beforePath="$PROJECT_DIR$/src/routers/Routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/Routers.js" afterDir="false" />
+>>>>>>> 0462854905974e77658b933a77c97649b3cb45ff
+    </list>
+>>>>>>> bb0b97b31ff7d0a968371858c7ea175108ed4e34
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="register" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -18,17 +80,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/img" />
+      <recent name="$PROJECT_DIR$/src/img" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Footer.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/Footer/Footer.js" working-dir="$PROJECT_DIR$/src/components/Footer">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.Footer.js" />
+        <item itemvalue="Node.js.Footer.js" />
+        <item itemvalue="Node.js.Footer.js" />
+        <item itemvalue="Node.js.Footer.js" />
+        <item itemvalue="Node.js.Footer.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -38,10 +121,22 @@
       <option name="presentableId" value="Default" />
       <updated>1691673338221</updated>
       <workItem from="1691673339917" duration="21000" />
+      <workItem from="1692099131816" duration="46614000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

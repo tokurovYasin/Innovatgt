@@ -1,22 +1,18 @@
 import React from 'react';
-import styled from "styled-components";
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg";
+import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
-import UserPage from "../UserPage";
-
 
 const Container = styled.div`
-  margin-top: 30px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   width: 100%;
 `;
-
 const CreateAccount = styled.div`
  width: 30%;
   margin-bottom: 40px;
   position: relative;
-
 `;
 
 const CreateAccTitle = styled.div`
@@ -71,25 +67,32 @@ const Button = styled.button`
  const ImgContainer = styled.div`
  `;
 
-const Login = (props) => {
 
-    const {setPassword, setEmail} = props
 
+
+
+
+
+
+
+
+
+
+
+
+const ForgotPassword = (props) => {
+ const {setPassword, setEmail} = props
     const navigate = useNavigate();
-
     return (
-        <Container>
+   <Container>
             <CreateAccount>
                 <CreateAccTitle>
-                    Логин
+                    Восстановить пароль
                 </CreateAccTitle>
-                <Desc>Введите ваш логин и пароль</Desc>
+                <Desc>Введите ваш e-mail </Desc>
                 <Form>
-                    <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
-                    <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button type="submit"  >Войти</Button>
-                    <Desc onClick={() => navigate("/forgotpassword")}><span>Не помню пароль</span></Desc>
-                    <Desc onClick={() => navigate("/register")}>У вас нет аккаунта? <span>Регистрация</span></Desc>
+                    <Input id="email" type="email" placeholder=" Введите ваш E-mail" onChange={(e) => setEmail(e.target.value)}/>
+                    <Button type="submit" onClick={() => navigate("/userpage")}>Отправить смс</Button>
                 </Form>
             </CreateAccount>
               <ImgContainer>
@@ -99,4 +102,4 @@ const Login = (props) => {
     );
 };
 
-export default Login;
+export default ForgotPassword;
