@@ -180,7 +180,7 @@ const UserPage = (props) => {
     const userPageBooks = async () => {
         try{
             const userBooks = await axios.get("http://34.173.33.226/api/v1/my-books/")
-
+           setUserBook()
             console.log(userBooks)
 
         } catch (error) {
