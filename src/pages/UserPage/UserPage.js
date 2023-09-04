@@ -4,10 +4,7 @@ import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-
-
-
-
+import {array} from "yup";
 
 
 const AccountPage = styled.div`
@@ -164,24 +161,32 @@ const AllBooks = styled.div`
 
 
 
+
 const UserPage = (props) => {
     const navigate = useNavigate();
     const [profile, setProfile] = useState([])
     const [userBook, setUserBook] = useState([])
     const token = JSON.parse(localStorage.getItem("user"))
-     // console.log(token)
-
+    const elements =[""]
 
 
     useEffect( () => {
      fetchUserData()
+     userPageBooks()
  }, [])
 
     const userPageBooks = async () => {
         try{
-            const userBooks = await axios.get("http://34.173.33.226/api/v1/my-books/")
-           setUserBook()
-            console.log(userBooks)
+             await axios.get("http://34.173.33.226/api/v1/my-books/",{
+            headers: {
+                Authorization: `Bearer ${token.access}`,
+            },
+        })
+                .then((res) => {
+                   setUserBook(res.data)
+                    console.log(res.data)
+                })
+
 
         } catch (error) {
              console.log("Error fetching user books" , error)
@@ -226,8 +231,10 @@ const UserPage = (props) => {
                     <UserBook>
                         Моя библиотека
                         <BookHave>
-                            <BookTitle>Повелитель мух/Уильям Голдинг</BookTitle>
-                            <BookTitle> Алиса в стране чудес/Льюис Кэрролл</BookTitle>
+                            {
+                                userBook.map(item => (  <BookTitle>{item.title}</BookTitle>) )
+                            }
+
                             <BookTitle>...</BookTitle>
                         </BookHave>
                         <AllBooks>Весь список</AllBooks>

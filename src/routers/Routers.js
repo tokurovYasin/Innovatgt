@@ -8,24 +8,29 @@ import UserPage from "../pages/UserPage";
 import Filter from "../components/Filter/Filter";
 import NotFound from "../pages/NotFound";
 import ForgotPassword from "../components/ForgotPassword";
-import BookList from "../components/BookList";
+import AllBooks from "../components/AllBooks";
+
+
+
+
+
 
 const Routers = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to={"/home"} />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/register" element={<AuthRootComponent />} />
-        <Route path="/login" element={<AuthRootComponent/>}/>
-        <Route path="/add-book" element={<AddNewBook/>}/>
-        <Route path="/about-Book" element={<AboutBook/>}/>
-        <Route path="/userpage" element={<UserPage/>}/>
-        <Route path="/filter" element={<Filter/>}/>
-        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
-        <Route path="/all-books" element={<BookList/>}/>
-        <Route path="/filter" element={<Filter/>}/>
-        <Route path="*" element={<NotFound/>}/>
-    </Routes>
+      <Routes>
+          <Route path="/" element={<Navigate to={"/home"}/>}/>
+          <Route path="/home" element={<HomePage/>}/>
+          <Route path="/register" element={<AuthRootComponent/>}/>
+          <Route path="/login" element={<AuthRootComponent/>}/>
+          <Route path="/add-book" element={<AddNewBook/>}/>
+          <Route path="/about-Book" element={<AboutBook/>}/>
+          <Route path="/userpage" element={<UserPage/>}/>
+          <Route path="/filter" element={<Filter/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+          <Route path="/all-books" element={<AllBooks/>}/>
+          <Route path="/filter" element={<Filter/>}/>
+          <Route path="*" element={<NotFound/>}/>
+      </Routes>
   );
 };
 

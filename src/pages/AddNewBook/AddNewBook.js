@@ -185,13 +185,12 @@ const AddNewBook = () => {
     const [genre, setGenre] = useState('')
     const [language, setLanguage] = useState('')
     const [description, setDescription] = useState('')
-
     const fileComponent = useRef()
 
     const formData = { image, title, condition, author, genre, language, description}
     const fileReader = new FileReader()
     fileReader.onloadend =() => {
-        // setImgUrl(fileReader.result)
+        setImgUrl(fileReader.result)
     }
 
     const handleSubmit = async (e) => {
@@ -203,11 +202,7 @@ const AddNewBook = () => {
         formData.append("genre", genre)
         formData.append("language", language)
         formData.append("description", description)
-        console.log(image)
-
         const token = JSON.parse(localStorage.getItem("user"))
-
-
 
         const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
             headers: {
@@ -335,7 +330,7 @@ const AddNewBook = () => {
                                 </StyledDatalist>
                                 <StyledLabel>Описание книги</StyledLabel>
                                 <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
-                                <StyledButton type="submit" onClick={() => navigate("/userpage")}>Публиковать книгу</StyledButton>
+                                <StyledButton type="submit" >Публиковать книгу</StyledButton>
                             </AddNewBookBlockRight>
                         </StyledForm>
                     </AddNewBookInfoForm1>

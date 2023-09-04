@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import styled from "styled-components";
 import {navigate} from "use-history";
+import {Link, useParams} from "react-router-dom";
+import {array} from "yup";
 
 const AllBooksPage = styled.div`
  padding: 50px 80px ;
@@ -16,6 +18,7 @@ const AllBooksPageTitle = styled.h1`
 
 const BooksBlock = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
@@ -26,7 +29,7 @@ const BookItem = styled.div`
   transition: all 0.3s ease-in-out;
   padding-bottom: 30px;
   overflow: hidden;
-  
+  margin-bottom: 30px;
 `;
 
 const BookItemImg = styled.img`
@@ -41,7 +44,7 @@ const BookItemImg = styled.img`
 `;
 
 const BookItemInfo = styled.div`
-    
+    cursor: pointer;
 `;
 
 const Title = styled.h2`
@@ -64,7 +67,7 @@ const Amount = styled.div`
     
 `;
 
-const BookList = () => {
+const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
 
@@ -85,7 +88,7 @@ const BookList = () => {
             <BooksBlock>
                 {books.map(book => (
                     <BookItem key={book.id}>
-                        <BookItemInfo>
+                        <Link to={`/book-detail/${book.id}`}>
                             <BookItemImg src={book.image}/>
                             <Title>{book.title}</Title>
                             <Author>{book.author}</Author>
@@ -93,7 +96,7 @@ const BookList = () => {
                             <Description>{book.description}</Description>
                             <Amount>{books.owner}</Amount>
                             <button>Одолжить книгу</button>
-                        </BookItemInfo>
+                        </Link>
                     </BookItem>
                 ))}
             </BooksBlock>
@@ -101,4 +104,4 @@ const BookList = () => {
     );
 };
 
-export default BookList;
+export default AllBooks;
