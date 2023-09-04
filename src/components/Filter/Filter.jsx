@@ -36,7 +36,7 @@ const Search_filter = styled.div`
   align-items: center;
   margin: 100px 0;
 `;
-const Filterr = () => {
+const Filter = () => {
   const [bookType, setBookType] = React.useState("");
   const [genreBook, setGenreBook] = React.useState("");
   const [bookStatus, setBookStatus] = React.useState("");
@@ -210,5 +210,5 @@ const Filterr = () => {
   );
 };
 
-export default Filterr;
+export default Filter;
 /* image 15 */

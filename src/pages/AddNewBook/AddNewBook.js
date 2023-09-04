@@ -206,8 +206,7 @@ const AddNewBook = () => {
         console.log(image)
 
         const token = JSON.parse(localStorage.getItem("user"))
-        e.preventDefault()
-        console.log(token.data)
+
 
 
         const response = await axios.post('http://34.173.33.226/api/v1/add-book/', formData, {
@@ -336,7 +335,7 @@ const AddNewBook = () => {
                                 </StyledDatalist>
                                 <StyledLabel>Описание книги</StyledLabel>
                                 <StyledTextarea type="text" onChange={(e) => setDescription(e.target.value)} placeholder='Ведите краткое описание книги' required/>
-                                <StyledButton type="submit" onClick={() => navigate("/")}>Публиковать книгу</StyledButton>
+                                <StyledButton type="submit" onClick={() => navigate("/userpage")}>Публиковать книгу</StyledButton>
                             </AddNewBookBlockRight>
                         </StyledForm>
                     </AddNewBookInfoForm1>

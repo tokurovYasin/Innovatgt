@@ -6,6 +6,10 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
+
+
+
+
 const AccountPage = styled.div`
   background-image: url("${bgImg}");
   background-size: 34%;
@@ -159,16 +163,32 @@ const AllBooks = styled.div`
 `;
 
 
+
 const UserPage = (props) => {
     const navigate = useNavigate();
     const [profile, setProfile] = useState([])
+    const [userBook, setUserBook] = useState([])
     const token = JSON.parse(localStorage.getItem("user"))
      // console.log(token)
 
 
- useEffect( () => {
+
+    useEffect( () => {
      fetchUserData()
  }, [])
+
+    const userPageBooks = async () => {
+        try{
+            const userBooks = await axios.get("http://34.173.33.226/api/v1/my-books/")
+
+            console.log(userBooks)
+
+        } catch (error) {
+             console.log("Error fetching user books" , error)
+        }
+    }
+
+
        const fetchUserData = async () => {
          try {
              const response = await axios.get("http://34.173.33.226/api/v1/userpage/", {
@@ -177,26 +197,15 @@ const UserPage = (props) => {
                  },
              });
              setProfile(response.data.results[0]);
-             console.log(response.data.results)
+             // console.log(response.data.results)
          } catch (error) {
              console.log("Error fetching user data" , error)
          }
      };
 
-    // if(!profile) {
-    //     return <div>
-    //         <p>Username: {profile.username}</p>
-    //     </div>
-    // }
-
     return (
         <AccountPage>
             <Container>
-                <div>
-                    <p> Username: {profile.username}</p>
-
-                </div>
-
                 <User>
                     <UserImg>
                         <img src={Avatar} width="40" height="40"/>
@@ -208,13 +217,12 @@ const UserPage = (props) => {
                 </User>
                 <BoxInfo>
                     <UserDesc>
-                        <UserEmail>aiganysh@gmail.com</UserEmail>
-                        <UserNumber>+4205766453</UserNumber>
-                        <UserLocation>Бишкек</UserLocation>
+                        <UserEmail>{profile.email}</UserEmail>
+                        <UserNumber>{profile.number}</UserNumber>
+                        <UserLocation>{profile.city}</UserLocation>
                         <UserChange>Изменить</UserChange>
                         <UserLogout>Выйти из аккаунта</UserLogout>
                     </UserDesc>
-
                     <UserBook>
                         Моя библиотека
                         <BookHave>
