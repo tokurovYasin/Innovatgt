@@ -202,7 +202,7 @@ const UserPage = (props) => {
                  },
              });
              setProfile(response.data.results[0]);
-             // console.log(response.data.results)
+             console.log(response.data.results)
          } catch (error) {
              console.log("Error fetching user data" , error)
          }

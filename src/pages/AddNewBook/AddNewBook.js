@@ -246,16 +246,14 @@ const AddNewBook = () => {
                                     <AddNewBookImgInput type="file"  name="image" ref={fileComponent} onChange={handleChange}/>
                                     <AddNewBookImage>
                                         <AddNewBookImageText>
-
-                                        {image ?
+                                            {image ?
                                                 <Image src={imgUrl ? imgUrl : "no_photo.jpg"}
                                                        onDrop={handleDrop}
                                                        onDragEnter={handleDragEmpty}
                                                        onDragOver={handleDragEmpty}
                                                 />
                                                 :
-
-                                                <SpanImg>Нажмите, чтобы выбрать картину или перетащите картину сюда</SpanImg>
+                                            <SpanImg>Нажмите, чтобы выбрать картину или перетащите картину сюда</SpanImg>
                                             }
                                         </AddNewBookImageText>
                                     </AddNewBookImage>
