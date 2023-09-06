@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ImgLogo from "../../assets/img/logo kitepter.png";
@@ -6,6 +6,8 @@ import ImgStatus from "../../assets/img/Bookmark.png";
 import ImgSearch from "../../assets/img/Search_light.png";
 import ImgFilt from "../../assets/img/filtration.png";
 import ImgNotification from "../../assets/img/Bell_pin.png";
+import UserIcon from "../../assets/img/user-fill.png"
+import BookIcon from "../../assets/img/book-line.png"
 
 const HeaderPage = styled.div`
   background-color: #24255b;
@@ -108,9 +110,24 @@ const Notifiсation = styled.div`
   cursor: pointer;
   margin-left: 20px;
 `;
+const User = styled.div`
+  width: 100px;
+  height: 50px;
+  text-decoration-color: white;
+`;
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  const authorizeUser = () => {
+    setIsAuthorized(true);
+  };
+
+  const logoutUser = () => {
+    setIsAuthorized(false);
+  };
+
   return (
     <HeaderPage>
       <Container>
@@ -134,8 +151,14 @@ const Header = () => {
             <img src={ImgNotification} width="30" height="30" />
           </Notifiсation>
           <UserPage>
-            <Logn onClick={() => navigate("/login")}>Логин</Logn>
-            <Registr onClick={() => navigate("/register")}>Регистрация</Registr>
+            {isAuthorized ? (
+                <AuthorizedHeader onLogout={logoutUser} />
+            ) : (
+                // Render the header for non-authorized users
+                <NonAuthorizedHeader onAuthorize={authorizeUser} />
+            )}
+            {/*<Logn onClick={() => navigate("/login")}>Логин</Logn>*/}
+            {/*<Registr onClick={() => navigate("/register")}>Регистрация</Registr>*/}
           </UserPage>
         </Menu>
       </Container>
@@ -143,4 +166,31 @@ const Header = () => {
   );
 };
 
+const AuthorizedHeader = ({ onLogout }) => {
+  return (
+      <header>
+        <h1>Welcome, User!</h1>
+        <User>
+          <img src={BookIcon} width="30" height="30"/>
+          <img src={UserIcon} width="30" height="30"/>
+        </User>
+        <button onClick={onLogout}>Logout</button>
+      </header>
+  );
+};
+const NonAuthorizedHeader = ({ onAuthorize }) => {
+  const navigate = useNavigate();
+    // const history = useHistory();
+    const handleLoginClick = () => {
+        navigate('/login');
+        onAuthorize();
+    };
+  return (
+      <header>
+        <h1>Welcome to Our App</h1>
+        <Logn onClick={handleLoginClick}>Логин</Logn>
+        <Registr onClick={() => navigate("/register")}>Регистрация</Registr>
+      </header>
+  );
+}
 export default Header;

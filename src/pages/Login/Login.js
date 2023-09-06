@@ -3,6 +3,8 @@ import styled from "styled-components";
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg";
 import {useNavigate} from "react-router-dom";
 import UserPage from "../UserPage";
+import BookIcon from "../../assets/img/book-line.png";
+import UserIcon from "../../assets/img/user-fill.png";
 
 
 const Container = styled.div`
