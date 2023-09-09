@@ -6,9 +6,7 @@ import styled from "styled-components";
 import axios from "axios";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import UserPage from "../UserPage";
-import {useHistory} from "use-history";
-import {createAuthProvider} from "react-token-auth";
+
 
 const Box = styled.div`
   display: flex;
@@ -21,26 +19,25 @@ const Box = styled.div`
 
 
 const AuthRootComponent = () => {
-    const [ email,setEmail ] = useState("")
-    const [ password,setPassword ] = useState("")
-    const [ password_confirm,setPassword_confirm ] = useState("")
-    const [ number,setNumber ] = useState("")
-    const [ username,setUserName ] = useState("")
-    const [ city,setCity ] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [password_confirm, setPassword_confirm] = useState("")
+    const [number, setNumber] = useState("")
+    const [username, setUserName] = useState("")
+    const [city, setCity] = useState("")
 
 
     const location = useLocation()
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if(location.pathname === "/login") {
-                const userData = {
-           email,
-           password
-       }
-       const user = await axios.post("http://34.173.33.226/api/v1/login/", userData)
+        if (location.pathname === "/login") {
+            const userData = {
+                email,
+                password
+            }
+            const user = await axios.post("http://34.173.33.226/api/v1/login/", userData)
             console.log(user.data)
-            localStorage.setItem("user",JSON.stringify(user.data))
+            localStorage.setItem("user", JSON.stringify(user.data))
             alert("Вы вошли в свой аккаунт!")
 
 
@@ -54,8 +51,8 @@ const AuthRootComponent = () => {
                     number,
                     city
                 }
-            const newUser = await axios.post("http://34.173.33.226/api/v1/register/", userData)
-           alert("Вы успешно зарегестрировались!")
+                const newUser = await axios.post("http://34.173.33.226/api/v1/register/", userData)
+                alert("Вы успешно зарегестрировались!")
             } else {
                 throw new Error("У вас не совпадают пароли")
             }
@@ -81,7 +78,6 @@ const AuthRootComponent = () => {
         }),
         onSubmit: values => {
             delete values.repeatPassword
-            // dispatch(newUser(values))
         },
     });
 
@@ -89,9 +85,10 @@ const AuthRootComponent = () => {
         <Box onSubmit={handleSubmit}>
             {
                 location.pathname === "/login"
-                    ? <Login setEmail = {setEmail}  setPassword = {setPassword}/> : location.pathname === "/register"
-                        ? <Register setEmail = {setEmail} setPassword = {setPassword} setUserName = {setUserName} setNumber = {setNumber}
-                                    setPassword_confirm  = {setPassword_confirm } setCity = {setCity}   />  : null }
+                    ? <Login setEmail={setEmail} setPassword={setPassword}/> : location.pathname === "/register"
+                        ? <Register setEmail={setEmail} setPassword={setPassword} setUserName={setUserName}
+                                    setNumber={setNumber}
+                                    setPassword_confirm={setPassword_confirm} setCity={setCity}/> : null}
 
         </Box>
 

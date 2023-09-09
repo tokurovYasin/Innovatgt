@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import ImgInsta from "../../assets/img/inst.png";
 import ImgGoogle from "../../assets/img/google.png";
 import ImgVk from "../../assets/img/vk.png";
@@ -100,27 +99,26 @@ const Footer = () => {
                     </AboutUsDesc>
                     <FAQ>FAQ</FAQ>
                 </Left>
-
                 <Right>
                     <BoxCallBack>
                         Свяжитесь с нами
                         <Input type="text" size="30" color="white" placeholder="Отправить сообщение"/>
                     </BoxCallBack>
-                         <SocMedia>
+                    <SocMedia>
                         <SocMediaTitle>
                         </SocMediaTitle>
                         <SocMediaIcons>
                             <Inst>
-                                  <img src={ImgInsta} width="20" height="20"/>
+                                <img src={ImgInsta} width="20" height="20"/>
                             </Inst>
                             <Google>
-                                  <img src={ImgGoogle} width="20" height="20"/>
+                                <img src={ImgGoogle} width="20" height="20"/>
                             </Google>
                             <Gthub>
                                 <img src={ImgGithub} width="20" height="20"/>
                             </Gthub>
                             <Whatsup>
-                                    <img src={ImgWhats} width="20" height="20"/>
+                                <img src={ImgWhats} width="20" height="20"/>
                             </Whatsup>
                             <Vk>
                                 <img src={ImgVk} width="20" height="20"/>

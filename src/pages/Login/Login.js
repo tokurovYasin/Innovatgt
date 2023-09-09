@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import bgrImg from "../../assets/img/212e0f9c94697b8df3ea9d94c0617146.jpeg";
 import {useNavigate} from "react-router-dom";
-import UserPage from "../UserPage";
+
 
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const CreateAccount = styled.div`
- width: 30%;
+  width: 30%;
   margin-bottom: 40px;
   position: relative;
 
@@ -53,28 +53,28 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
 `;
- const Desc = styled.p`
-   align-items: center;
-   display: flex;
-   justify-content: center;
-   font-size: 16px;
-   font-family: 'Jost', sans-serif;
-   span {
-     cursor: pointer;
-     margin-left: 2px;
-   }
-   span:hover {
-     color: #24255B;
-   }
- `;
+const Desc = styled.p`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Jost', sans-serif;
 
- const ImgContainer = styled.div`
+  span {
+    cursor: pointer;
+    margin-left: 2px;
+  }
+
+  span:hover {
+    color: #24255B;
+  }
+`;
+
+const ImgContainer = styled.div`
  `;
 
 const Login = (props) => {
-
     const {setPassword, setEmail} = props
-
     const navigate = useNavigate();
 
     return (
@@ -86,14 +86,15 @@ const Login = (props) => {
                 <Desc>Введите ваш логин и пароль</Desc>
                 <Form>
                     <Input id="email" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)}/>
-                    <Input id="password" type="password" placeholder="Пароль" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button type="submit" onClick={() => navigate("/userpage")} >Войти</Button>
+                    <Input id="password" type="password" placeholder="Пароль"
+                           onChange={(e) => setPassword(e.target.value)}/>
+                    <Button type="submit">Войти</Button>
                     <Desc onClick={() => navigate("/forgotpassword")}><span>Не помню пароль</span></Desc>
                     <Desc onClick={() => navigate("/register")}>У вас нет аккаунта? <span>Регистрация</span></Desc>
                 </Form>
             </CreateAccount>
-              <ImgContainer>
-                   <img src={bgrImg} width="500"/>
+            <ImgContainer>
+                <img src={bgrImg} width="500"/>
             </ImgContainer>
         </Container>
     );

@@ -4,7 +4,7 @@ import bgImg from "../../assets/img/bg-image.png"
 import Avatar from "../../assets/img/Group 78.png"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {array} from "yup";
+
 
 
 const AccountPage = styled.div`
@@ -40,13 +40,10 @@ const UserName = styled.div`
   font-weight: 400;
   margin-left: 40px;
   font-size: 24px;
-
 `;
 const BoxInfo = styled.div`
   display: flex;
   margin-left: 23px;
-
-
 `;
 const UserDesc = styled.div`
   margin-right: 250px;
@@ -81,8 +78,6 @@ const UserBook = styled.div`
   margin-bottom: 10px;
   font-size: 20px;
   font-family: 'Jost', sans-serif;
-
-
 `;
 const UserChange = styled.div`
   font-size: 18px;
@@ -93,8 +88,6 @@ const UserChange = styled.div`
   padding: 10px 80px;
   border-radius: 25px;
   font-family: 'Jost', sans-serif;
-
-
 `;
 const UserLogout = styled.div`
   font-size: 18px;
@@ -159,15 +152,12 @@ const AllBooks = styled.div`
 
 `;
 
-
-
-
 const UserPage = (props) => {
     const navigate = useNavigate();
     const [profile, setProfile] = useState([])
     const [userBook, setUserBook] = useState([])
     const token = JSON.parse(localStorage.getItem("user"))
-    const elements =[""]
+
 
 
     useEffect( () => {
@@ -186,15 +176,12 @@ const UserPage = (props) => {
                    setUserBook(res.data)
                     console.log(res.data)
                 })
-
-
         } catch (error) {
              console.log("Error fetching user books" , error)
         }
     }
 
-
-       const fetchUserData = async () => {
+    const fetchUserData = async () => {
          try {
              const response = await axios.get("http://34.173.33.226/api/v1/userpage/", {
                  headers: {
@@ -234,7 +221,6 @@ const UserPage = (props) => {
                             {
                                 userBook.map(item => (  <BookTitle>{item.title}</BookTitle>) )
                             }
-
                             <BookTitle>...</BookTitle>
                         </BookHave>
                         <AllBooks>Весь список</AllBooks>

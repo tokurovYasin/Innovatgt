@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import ImgLogo from "../../assets/img/logo kitepter.png";
 import ImgStatus from "../../assets/img/Bookmark.png";
-import ImgSearch from "../../assets/img/Search_light.png";
 import ImgFilt from "../../assets/img/filtration.png";
 import ImgNotification from "../../assets/img/Bell_pin.png";
+
 
 const HeaderPage = styled.div`
   background-color: #24255b;
@@ -16,7 +16,6 @@ const Container = styled.div`
   color: white;
   margin: 0 auto;
   padding: 0 15px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,13 +38,7 @@ const SearchContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  //img {
-  //  content: "";
-  //  position: absolute;
-  //  top: 10px;
-  // left: 15px;
-  //  cursor: pointer;
-  //}
+
   img {
     position: absolute;
     right: 28px;
@@ -82,7 +75,7 @@ const UserPage = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 15px;
-    font-family: 'Jost', sans-serif;
+  font-family: 'Jost', sans-serif;
 `;
 const Registr = styled.div`
   margin-left: 18px;
@@ -108,39 +101,62 @@ const Notifiсation = styled.div`
   cursor: pointer;
   margin-left: 20px;
 `;
+const User = styled.div`
+  width: 100px;
+  height: 50px;
+  text-decoration-color: white;
+`;
 
-const Header = () => {
-  const navigate = useNavigate();
-  return (
-    <HeaderPage>
-      <Container>
-        <Logo onClick={() => navigate("/home")}>
-          <img src={ImgLogo} width="100" height="100" />
-        </Logo>
-        <SearchContainer>
-          <Input placeholder="Поиск..." type="text" size="30" color="white" />
-          {/*<img src={ImgSearch} width="30" height="30"/>*/}
-          <Filtration onClick={() => navigate("/filter")}>
-            <img src={ImgFilt} width="43" height="43" />
-          </Filtration>
-        </SearchContainer>
-        <Menu>
-          <Status>
-            <BoxStatus>
-              <img src={ImgStatus} width="30" height="30" />
-            </BoxStatus>
-          </Status>
-          <Notifiсation>
-            <img src={ImgNotification} width="30" height="30" />
-          </Notifiсation>
-          <UserPage>
-            <Logn onClick={() => navigate("/login")}>Логин</Logn>
-            <Registr onClick={() => navigate("/register")}>Регистрация</Registr>
-          </UserPage>
-        </Menu>
-      </Container>
-    </HeaderPage>
-  );
+
+const Header = ({profile}) => {
+    const navigate = useNavigate();
+    const [isSuccess, setIsSuccess] = useState(false)
+
+    const token = JSON.parse(localStorage.getItem("user"))
+    const handleLogout = () => {
+    }
+
+
+    return (
+        <HeaderPage>
+            <Container>
+                <Logo onClick={() => navigate("/home")}>
+                    <img src={ImgLogo} width="100" height="100"/>
+                </Logo>
+                <SearchContainer>
+                    <Input placeholder="Поиск..." type="text" size="30" color="white"/>
+                    {/*<img src={ImgSearch} width="30" height="30"/>*/}
+                    <Filtration onClick={() => navigate("/filter")}>
+                        <img src={ImgFilt} width="43" height="43"/>
+                    </Filtration>
+                </SearchContainer>
+                <Menu>
+                    <Status>
+                        <BoxStatus>
+                            <img src={ImgStatus} width="30" height="30"/>
+                        </BoxStatus>
+                    </Status>
+                    <Notifiсation>
+                        <img src={ImgNotification} width="30" height="30"/>
+                    </Notifiсation>
+                    {
+                        isSuccess ?
+                            <>
+                                <p>Welcome,{profile} </p>
+                                <button onClick={handleLogout}>Logout</button>
+                            </>
+                            :
+                            (
+                                <UserPage>
+                                    <Logn onClick={() => navigate("/login")}>Логин</Logn>
+                                    <Registr onClick={() => navigate("/register")}>Регистрация</Registr>
+                                </UserPage>)
+                    }
+                </Menu>
+            </Container>
+        </HeaderPage>
+    );
 };
+
 
 export default Header;
