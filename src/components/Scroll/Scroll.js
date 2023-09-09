@@ -56,6 +56,21 @@ const Amount = styled.h4`
     
 `;
 
+const ChangeBtn = styled.button`
+  margin: 50px 0;
+  width: 200px;
+  padding: 10px 15px;
+  border: navajowhite;
+  background-color: #040470;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  &:hover {
+    background-color: #2929a2;
+  }
+`;
+
 
 const Scroll = () => {
 
@@ -77,14 +92,14 @@ const Scroll = () => {
             <ScrollAllBooks>
                 {
                     scrollData.map(item => (
-                        <ScrollItem key={item.id} onClick={() => navigate("/book-detail/{id}")}>
+                        <ScrollItem key={item.id} onClick={() => navigate("/about-Book")}>
                             <ScrollItemBookImg src={item.image}/>
                             <ScrollItemBookInfo>
                                 <Title>{item.title}</Title>
                                 <Author>{item.author}</Author>
                                 <Genre>{item.genre.title}</Genre>
                                 <Amount>{item.amount}</Amount>
-                                <button>Одолжить книгу</button>
+                                <ChangeBtn onClick={() => navigate("/about-Book")}>Подробнее</ChangeBtn>
                             </ScrollItemBookInfo>
                         </ScrollItem>
                     ))

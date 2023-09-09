@@ -30,8 +30,7 @@ const AuthRootComponent = () => {
 
 
     const location = useLocation()
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async () => {
         if(location.pathname === "/login") {
                 const userData = {
            email,

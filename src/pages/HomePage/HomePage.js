@@ -5,6 +5,7 @@ import Search from "../../assets/img/search.png"
 import Phone from "../../assets/img/phone.png"
 import Time from "../../assets/img/time.png"
 import Scroll from "../../components/Scroll";
+import {navigate} from "use-history";
 
 
 const HomePageBlock =  styled.div`
@@ -151,8 +152,8 @@ const HomePage = () => {
                             Если вы хотите внести свой вклад<br/> в устойчивую окружающую среду и повысить уровень
                             грамотности в мире, то <strong>Китептер</strong> для вас.
                         </MainDescription>
-                        <MainBtnRegister>Присоединиться сейчас</MainBtnRegister>
-                        <MainBtnBooks>Найти книгу</MainBtnBooks>
+                        <MainBtnRegister onClick={() => navigate("/register")}>Присоединиться сейчас</MainBtnRegister>
+                        <MainBtnBooks onClick={() => navigate("/all-books")}>Найти книгу</MainBtnBooks>
                     </MainTitleBox>
                     <MainImageBox>
                         <img src={ImgMain} width="700"/>

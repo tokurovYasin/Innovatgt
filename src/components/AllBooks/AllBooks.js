@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import styled from "styled-components";
-import {navigate} from "use-history";
 import {Link, useParams} from "react-router-dom";
-import {array} from "yup";
 
 const AllBooksPage = styled.div`
  padding: 50px 80px ;
@@ -22,7 +20,7 @@ const BooksBlock = styled.div`
   justify-content: space-between;
 `;
 
-const BookItem = styled.div`
+const BookItem = styled.a`
   width: 300px;
   box-shadow: 1px 1px 4px 0 #9b9b9b;
   border-radius: 25px;
@@ -30,6 +28,7 @@ const BookItem = styled.div`
   padding-bottom: 30px;
   overflow: hidden;
   margin-bottom: 30px;
+  cursor: pointer;
 `;
 
 const BookItemImg = styled.img`
@@ -67,6 +66,21 @@ const Amount = styled.div`
     
 `;
 
+const ChangeBtn = styled.button`
+  margin: 50px 0;
+  width: 200px;
+  padding: 10px 15px;
+  border: navajowhite;
+  background-color: #040470;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  &:hover {
+    background-color: #2929a2;
+  }
+`;
+
 const AllBooks = () => {
 
     const [books, setBooks] = useState([]);
@@ -95,7 +109,7 @@ const AllBooks = () => {
                             <Genre>{book.genre.title}</Genre>
                             <Description>{book.description}</Description>
                             <Amount>{books.owner}</Amount>
-                            <button>Одолжить книгу</button>
+                            <ChangeBtn >Подробнее</ChangeBtn>
                         </Link>
                     </BookItem>
                 ))}
